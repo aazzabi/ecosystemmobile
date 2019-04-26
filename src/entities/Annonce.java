@@ -6,7 +6,7 @@
 package entities;
 
 
-import java.sql.Date;
+import java.util.Date;
 import java.time.LocalDate;
 
 
@@ -70,13 +70,13 @@ public class Annonce  {
     public Annonce(String titre, String description,Double prix, String region, String photo, int categorie_id, int user_id) {
         this.titre = titre;
         this.description = description;
-        this.date_creation = Date.valueOf(LocalDate.now());
-        this.date_update = Date.valueOf(LocalDate.now());
+        this.date_creation = new Date();
+        this.date_update = new Date();
         this.prix = prix;
         this.region = region;
         this.etat = "Disponible";
         this.photo = photo;
-        this.photo_updated_at =Date.valueOf(LocalDate.now());
+        this.photo_updated_at = new Date();
         this.likes = 0;
         this.views = 0;
         this.categorie_id = categorie_id;

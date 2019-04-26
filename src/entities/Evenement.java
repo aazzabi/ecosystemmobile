@@ -53,9 +53,7 @@ public class Evenement {
         this.description = description;
     }
     
-     public Evenement( String lieu, int id_categorie,Date date, String titre, String description) {
-      
-        
+     public Evenement( String lieu, int id_categorie, Date date, String titre, String description) {
         this.lieu = lieu;
         this.id_categorie = id_categorie;
         this.titre = titre;

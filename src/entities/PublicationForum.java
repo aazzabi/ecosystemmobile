@@ -6,7 +6,7 @@
 package entities;
 
 import java.util.ArrayList;
-import java.sql.Date;
+import java.util.Date;
 import java.time.LocalDate;
 
 /**
@@ -29,7 +29,7 @@ public class PublicationForum {
     public PublicationForum() {  
         this.etat = "publié";
         this.createdBy = Session.getCurrentSession();
-        this.createdAt = Date.valueOf(LocalDate.now());
+        this.createdAt = new Date();
         this.nbrVues = 0;
         this.commentaires = new ArrayList();
     }
