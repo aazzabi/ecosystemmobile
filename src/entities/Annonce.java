@@ -6,6 +6,8 @@
 package entities;
 
 
+import java.util.Date;
+import java.time.LocalDate;
 import java.util.Calendar;
 
 
@@ -76,6 +78,7 @@ public class Annonce  {
         this.etat = "Disponible";
         this.photo = photo;
         this.photo_updated_at =Calendar.getInstance();
+        this.photo_updated_at = new Date();
         this.likes = 0;
         this.views = 0;
         this.categorie_id = categorie_id;
