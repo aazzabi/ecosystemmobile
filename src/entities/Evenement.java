@@ -7,7 +7,7 @@ package entities;
 
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 //import java.sql.Date;
 /**
@@ -20,12 +20,12 @@ public class Evenement {
     private int id_categorie;
     private Utilisateur createdBy;
     private String lieu;
-    private Date date;
+    private Calendar date;
     private Categorie_Evts categorie;
     private String titre;
     private String description;
     private String cover;
-    private Date coverUpdatedAt;
+    private Calendar coverUpdatedAt;
 
     public List<Utilisateur> getParticipants() {
         return participants;
@@ -43,7 +43,7 @@ public class Evenement {
     
     
 
-    public Evenement(int id, Utilisateur createdBy, String lieu, Date date, Categorie_Evts categorie, String titre, String description) {
+    public Evenement(int id, Utilisateur createdBy, String lieu, Calendar date, Categorie_Evts categorie, String titre, String description) {
         this.id = id;
         this.createdBy = createdBy;
         this.lieu = lieu;
@@ -53,7 +53,7 @@ public class Evenement {
         this.description = description;
     }
     
-     public Evenement( String lieu, int id_categorie,Date date, String titre, String description) {
+     public Evenement( String lieu, int id_categorie,Calendar date, String titre, String description) {
       
         
         this.lieu = lieu;
@@ -62,7 +62,7 @@ public class Evenement {
         this.description = description;
         this.date=date;
     }
-      public Evenement( String lieu, int id_categorie, String titre, String description,Date date) {
+      public Evenement( String lieu, int id_categorie, String titre, String description,Calendar date) {
       
         
         this.lieu = lieu;
@@ -81,7 +81,7 @@ public class Evenement {
     }
     
 
-    public Evenement(int id, Utilisateur createdBy, String lieu,Date date, Categorie_Evts categorie, String titre, String description, String cover, Date coverUpdatedAt, int nbvues) {
+    public Evenement(int id, Utilisateur createdBy, String lieu,Calendar date, Categorie_Evts categorie, String titre, String description, String cover, Calendar coverUpdatedAt, int nbvues) {
         this.id = id;
         this.createdBy = createdBy;
         this.lieu = lieu;
@@ -94,7 +94,7 @@ public class Evenement {
         this.nbvues = nbvues;
     }
 
-    public Evenement(int id, String lieu, Date date, Categorie_Evts categorie, String titre, String description, String cover, Date coverUpdatedAt, int nbvues) {
+    public Evenement(int id, String lieu, Calendar date, Categorie_Evts categorie, String titre, String description, String cover, Calendar coverUpdatedAt, int nbvues) {
         this.id = id;
         this.lieu = lieu;
         this.date = date;
@@ -116,7 +116,7 @@ public class Evenement {
         this.nbvues = nbvues;
     }
 
-    public Evenement(int id, String lieu, int id_categorie, String titre, String description, Date date,String cover) {
+    public Evenement(int id, String lieu, int id_categorie, String titre, String description, Calendar date,String cover) {
         this.id = id;
         this.lieu = lieu;
         this.date = date;
@@ -127,7 +127,7 @@ public class Evenement {
     }
     
 
-    public Evenement(int id, Utilisateur createdBy, String lieu,Date date,Categorie_Evts categorie, String titre, String description, String cover, int nbvues) {
+    public Evenement(int id, Utilisateur createdBy, String lieu,Calendar date,Categorie_Evts categorie, String titre, String description, String cover, int nbvues) {
         this.id = id;
         this.createdBy = createdBy;
         this.lieu = lieu;
@@ -138,7 +138,7 @@ public class Evenement {
         this.nbvues = nbvues;
         this.date=date;
     }
-     public Evenement( Utilisateur createdBy, String lieu,Date date,Categorie_Evts categorie, String titre, String description, String cover, int nbvues) {
+     public Evenement( Utilisateur createdBy, String lieu,Calendar date,Categorie_Evts categorie, String titre, String description, String cover, int nbvues) {
        // this.id = id;
         this.createdBy = createdBy;
         this.lieu = lieu;
@@ -151,7 +151,7 @@ public class Evenement {
     }
    
 
-    public Evenement(String lieu, int id_categorie, String titre, String description, Date date, String cover) {
+    public Evenement(String lieu, int id_categorie, String titre, String description, Calendar date, String cover) {
         this.lieu = lieu;
         this.date = date;
         this.id_categorie = id_categorie;
@@ -186,11 +186,11 @@ public class Evenement {
         this.lieu = lieu;
     }
 
-    public Date getDate() {
+    public Calendar getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Calendar date) {
         this.date = date;
     }
 
@@ -226,11 +226,11 @@ public class Evenement {
         this.cover = cover;
     }
 
-    public Date getCoverUpdatedAt() {
+    public Calendar getCoverUpdatedAt() {
         return coverUpdatedAt;
     }
 
-    public void setCoverUpdatedAt(Date coverUpdatedAt) {
+    public void setCoverUpdatedAt(Calendar coverUpdatedAt) {
         this.coverUpdatedAt = coverUpdatedAt;
     }
 

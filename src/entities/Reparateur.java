@@ -5,8 +5,6 @@
  */
 package entities;
 
-import entities.Utilisateur;
-
 /**
  *
  * @author arafe

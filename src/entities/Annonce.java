@@ -6,8 +6,7 @@
 package entities;
 
 
-import java.sql.Date;
-import java.time.LocalDate;
+import java.util.Calendar;
 
 
 /**
@@ -22,9 +21,9 @@ public class Annonce  {
     
     private String description;
     
-    private Date date_creation;
+    private Calendar date_creation;
     
-    private Date date_update;;
+    private Calendar date_update;;
     
     private Double prix;
     
@@ -34,7 +33,7 @@ public class Annonce  {
     
     private String photo;
     
-    private Date photo_updated_at;
+    private Calendar photo_updated_at;
     
     private int likes;
     
@@ -50,7 +49,7 @@ public class Annonce  {
     public Annonce() {
     }
 
-    public Annonce(int id, String titre, String description, Date date_creation, Date date_update, Double prix, String region, String etat, String photo, Date photo_updated_at, int likes, int views, int categorie_id, int user_id) {
+    public Annonce(int id, String titre, String description, Calendar date_creation, Calendar date_update, Double prix, String region, String etat, String photo, Calendar photo_updated_at, int likes, int views, int categorie_id, int user_id) {
         this.id = id;
         this.titre = titre;
         this.description = description;
@@ -70,13 +69,13 @@ public class Annonce  {
     public Annonce(String titre, String description,Double prix, String region, String photo, int categorie_id, int user_id) {
         this.titre = titre;
         this.description = description;
-        this.date_creation = Date.valueOf(LocalDate.now());
-        this.date_update = Date.valueOf(LocalDate.now());
+        this.date_creation = Calendar.getInstance();
+        this.date_update = Calendar.getInstance();
         this.prix = prix;
         this.region = region;
         this.etat = "Disponible";
         this.photo = photo;
-        this.photo_updated_at =Date.valueOf(LocalDate.now());
+        this.photo_updated_at =Calendar.getInstance();
         this.likes = 0;
         this.views = 0;
         this.categorie_id = categorie_id;
@@ -117,19 +116,19 @@ public class Annonce  {
         this.description = description;
     }
 
-    public Date getDate_creation() {
+    public Calendar getDate_creation() {
         return date_creation;
     }
 
-    public void setDate_creation(Date date_creation) {
+    public void setDate_creation(Calendar date_creation) {
         this.date_creation = date_creation;
     }
 
-    public Date getDate_update() {
+    public Calendar getDate_update() {
         return date_update;
     }
 
-    public void setDate_update(Date date_update) {
+    public void setDate_update(Calendar date_update) {
         this.date_update = date_update;
     }
 
@@ -165,11 +164,11 @@ public class Annonce  {
         this.photo = photo;
     }
 
-    public Date getPhoto_updated_at() {
+    public Calendar getPhoto_updated_at() {
         return photo_updated_at;
     }
 
-    public void setPhoto_updated_at(Date photo_updated_at) {
+    public void setPhoto_updated_at(Calendar photo_updated_at) {
         this.photo_updated_at = photo_updated_at;
     }
 
