@@ -81,10 +81,10 @@ public class BaseForm extends Form {
                             new Label(URLImage.createToStorage(encImage, "User" + Utilisateur.current_user.getPhoto(), Utilisateur.current_user.getPhoto(), URLImage.RESIZE_SCALE_TO_FILL).scaled(200, 200), "PictureWhiteBackgrond"))
             ));
         }
-
         tb.addMaterialCommandToSideMenu("A", FontImage.MATERIAL_UPDATE, e -> new AccueilForm(res).show());
         tb.addMaterialCommandToSideMenu("B", FontImage.MATERIAL_PARTY_MODE, e -> new AccueilForm(res).show());
         tb.addMaterialCommandToSideMenu("C", FontImage.MATERIAL_SETTINGS, e -> new AccueilForm(res).show());
+        tb.addMaterialCommandToSideMenu("Forum", FontImage.MATERIAL_VOICEMAIL, e -> new ForumForm(res).show());
         tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> {
             try {
                 Database db = Database.openOrCreate("EcoSystem.db");
