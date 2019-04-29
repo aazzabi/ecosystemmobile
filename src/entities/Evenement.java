@@ -39,9 +39,7 @@ public class Evenement {
     private List<Utilisateur>participants=new ArrayList();
     
     public Evenement() {
-    }
-    
-    
+    }  
 
     public Evenement(int id, Utilisateur createdBy, String lieu, Calendar date, Categorie_Evts categorie, String titre, String description) {
         this.id = id;
@@ -53,13 +51,7 @@ public class Evenement {
         this.description = description;
     }
     
-<<<<<<< HEAD
      public Evenement( String lieu, int id_categorie,Calendar date, String titre, String description) {
-      
-        
-=======
-     public Evenement( String lieu, int id_categorie, Date date, String titre, String description) {
->>>>>>> 79bf75c780c45e319990783f511d0fb866bf54d3
         this.lieu = lieu;
         this.id_categorie = id_categorie;
         this.titre = titre;
@@ -67,8 +59,6 @@ public class Evenement {
         this.date=date;
     }
       public Evenement( String lieu, int id_categorie, String titre, String description,Calendar date) {
-      
-        
         this.lieu = lieu;
         this.id_categorie = id_categorie;
         this.titre = titre;

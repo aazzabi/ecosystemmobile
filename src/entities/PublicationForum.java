@@ -6,12 +6,9 @@
 package entities;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.Calendar;
-=======
 import java.util.Date;
 import java.time.LocalDate;
->>>>>>> 79bf75c780c45e319990783f511d0fb866bf54d3
 
 /**
  *
@@ -33,11 +30,7 @@ public class PublicationForum {
     public PublicationForum() {  
         this.etat = "publié";
         this.createdBy = Session.getCurrentSession();
-<<<<<<< HEAD
         this.createdAt = Calendar.getInstance();
-=======
-        this.createdAt = new Date();
->>>>>>> 79bf75c780c45e319990783f511d0fb866bf54d3
         this.nbrVues = 0;
         this.commentaires = new ArrayList();
     }
