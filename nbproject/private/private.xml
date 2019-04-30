@@ -5,8 +5,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/ecosystemMobile/src/gui/AccueilForm.java</file>
+            <file>file:/C:/ecosystemMobile/src/gui/AffichageEvents.java</file>
             <file>file:/C:/ecosystemMobile/src/services/EvenementService.java</file>
             <file>file:/C:/ecosystemMobile/src/gui/BaseForm.java</file>
+            <file>file:/C:/ecosystemMobile/src/com/mycompany/myapp/MyApplication.java</file>
+            <file>file:/C:/ecosystemMobile/src/entities/Utilisateur.java</file>
+            <file>file:/C:/ecosystemMobile/src/gui/SignInForm.java</file>
+            <file>file:/C:/ecosystemMobile/src/services/ServiceUser.java</file>
         </group>
     </open-files>
 </project-private>
