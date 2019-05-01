@@ -6,6 +6,7 @@
 package entities;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -19,9 +20,9 @@ public class Annonce {
 
     private String description;
 
-    private Calendar date_creation;
+    private Date date_creation;
 
-    private Calendar date_update;
+    private Date date_update;
     ;
     
     private Double prix;
@@ -32,7 +33,7 @@ public class Annonce {
 
     private String photo;
 
-    private Calendar photo_updated_at;
+    private Date photo_updated_at;
 
     private int likes;
 
@@ -49,7 +50,7 @@ public class Annonce {
     public Annonce() {
     }
 
-    public Annonce(int id, String titre, String description, Calendar date_creation, Calendar date_update, Double prix, String region, String etat, String photo, Calendar photo_updated_at, int likes, int views, int categorie_id, int user_id) {
+    public Annonce(int id, String titre, String description, Date date_creation, Date date_update, Double prix, String region, String etat, String photo, Date photo_updated_at, int likes, int views, int categorie_id, int user_id) {
         this.id = id;
         this.titre = titre;
         this.description = description;
@@ -99,19 +100,19 @@ public class Annonce {
         this.description = description;
     }
 
-    public Calendar getDate_creation() {
+    public Date getDate_creation() {
         return date_creation;
     }
 
-    public void setDate_creation(Calendar date_creation) {
+    public void setDate_creation(Date date_creation) {
         this.date_creation = date_creation;
     }
 
-    public Calendar getDate_update() {
+    public Date getDate_update() {
         return date_update;
     }
 
-    public void setDate_update(Calendar date_update) {
+    public void setDate_update(Date date_update) {
         this.date_update = date_update;
     }
 
@@ -147,11 +148,11 @@ public class Annonce {
         this.photo = photo;
     }
 
-    public Calendar getPhoto_updated_at() {
+    public Date getPhoto_updated_at() {
         return photo_updated_at;
     }
 
-    public void setPhoto_updated_at(Calendar photo_updated_at) {
+    public void setPhoto_updated_at(Date photo_updated_at) {
         this.photo_updated_at = photo_updated_at;
     }
 
