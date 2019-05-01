@@ -56,6 +56,7 @@ public class DetailsPublication extends BaseForm {
     Label titre ; 
     Label date ;
     static Form f;
+    Form formaa;
     Label nbr_vues;
     Label publisher;
     Label etat;
@@ -235,10 +236,9 @@ public DetailsPublication(Resources res, PublicationForum p) {
         @Override
         public void actionPerformed(ActionEvent evt) {
             CommentairePublication cpub = new CommentairePublication(comm.getText(), p.getId(), Utilisateur.current_user.getId());
-            System.out.println(cpub.getIdPublication());
-            System.out.println(cpub.getDescription());
-            System.out.println(cpub.getCreatedBy());
             (new ForumService()).ajouterCommentaire(cpub);
+            formaa = new DetailsPublication(res, p);
+            formaa.show();
         }
     });
     cnt.add(commCont);

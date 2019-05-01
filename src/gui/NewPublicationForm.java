@@ -44,6 +44,7 @@ public class NewPublicationForm extends BaseForm {
     private TextField descriptionP;
     private Button btnConfirmer;
     Container cnt; 
+    Form formaa;
     Label libLabel;
     Label descLabel;
     Label categLabel;
@@ -95,6 +96,8 @@ public class NewPublicationForm extends BaseForm {
                System.out.println("add");
                PublicationForum publi = new PublicationForum(libelleP.getText(), descriptionP.getText(),idc, Utilisateur.current_user.getId());
                FrmService.ajouterPublication(publi);
+               formaa = new DetailsPublication(res, publi);
+                formaa.show();
            }
            
        });
