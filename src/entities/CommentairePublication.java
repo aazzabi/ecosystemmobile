@@ -34,9 +34,6 @@ public class CommentairePublication {
         this.description = description;
         this.idPublication = idPublication;
         this.createdBy = createdBy;
-        this.nbSignalisation = 0;
-        this.likes = 0;
-        this.dislikes = 0;
     }
 
     

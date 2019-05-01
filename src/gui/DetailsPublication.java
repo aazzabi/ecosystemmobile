@@ -25,6 +25,7 @@ import com.codename1.ui.Image;
 import com.codename1.ui.InfiniteContainer;
 import com.codename1.ui.Label;
 import com.codename1.ui.RadioButton;
+import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.events.ActionEvent;
@@ -58,12 +59,13 @@ public class DetailsPublication extends BaseForm {
     Label nbr_vues;
     Label publisher;
     Label etat;
-    Container cnt, cnt1, cnt2, cnt3 , cnt4, cntSignalisation;
+    Container cnt, cnt1, cnt2, cnt3 , cnt4, cntSignalisation,commCont;
     Label description;
     Resources res;
     ComboBox<String> cbSignalisation;
-    Button confirmeSign;
+    Button confirmeSign, btnAddComment;
     String cause;
+    TextField comm;
     private ArrayList<CommentairePublication> commentaires = new ArrayList<>();
 
     
@@ -223,7 +225,23 @@ public DetailsPublication(Resources res, PublicationForum p) {
     };
     ic.setScrollableY(false);
     cnt.add(ic);
-
+    commCont = new Container(BoxLayout.y());
+    comm = new TextField();
+    btnAddComment = new Button("Ajouter");
+    setSameWidth(comm,btnAddComment);
+    commCont.add(comm);
+    commCont.add(btnAddComment);
+    btnAddComment.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent evt) {
+            CommentairePublication cpub = new CommentairePublication(comm.getText(), p.getId(), Utilisateur.current_user.getId());
+            System.out.println(cpub.getIdPublication());
+            System.out.println(cpub.getDescription());
+            System.out.println(cpub.getCreatedBy());
+            (new ForumService()).ajouterCommentaire(cpub);
+        }
+    });
+    cnt.add(commCont);
 
 
     super.add(cnt);
