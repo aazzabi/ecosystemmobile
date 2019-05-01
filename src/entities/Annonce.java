@@ -5,48 +5,48 @@
  */
 package entities;
 
-
 import java.util.Date;
 import java.util.Calendar;
-
 
 /**
  *
  * @author anasc
  */
-public class Annonce  {
-    
+public class Annonce {
+
     private int id;
-    
+
     private String titre;
-    
+
     private String description;
-    
+
     private Calendar date_creation;
-    
-    private Calendar date_update;;
+
+    private Calendar date_update;
+    ;
     
     private Double prix;
-    
+
     private String region;
-    
-    private String etat ;
-    
+
+    private String etat;
+
     private String photo;
-    
+
     private Calendar photo_updated_at;
-    
+
     private int likes;
-    
-    private int  views;
-    
+
+    private int views;
+
     private int categorie_id;
-    
+
     private int user_id;
-    
-    private String lib ;
-    
+
+    private String lib;
+
     private String nomPrenom;
+
     public Annonce() {
     }
 
@@ -66,33 +66,16 @@ public class Annonce  {
         this.categorie_id = categorie_id;
         this.user_id = user_id;
     }
-
-    public Annonce(String titre, String description,Double prix, String region, String photo, int categorie_id, int user_id) {
+  public Annonce(String titre, String description, Double prix, String region, String photo, int categorie_id, int user_id) {
         this.titre = titre;
         this.description = description;
-        this.date_creation = Calendar.getInstance();
-        this.date_update = Calendar.getInstance();
         this.prix = prix;
         this.region = region;
-        this.etat = "Disponible";
         this.photo = photo;
-        this.photo_updated_at =Calendar.getInstance();
-        this.likes = 0;
-        this.views = 0;
         this.categorie_id = categorie_id;
         this.user_id = user_id;
     }
-    
-
-    public Annonce(String titre, String description, Double prix, String region, String photo, int categorie_id) {
-        this.titre = titre;
-        this.description = description;
-        this.prix = prix;
-        this.region = region;
-        this.photo = photo;
-        this.categorie_id = categorie_id;
-    }
-    
+  
     public int getId() {
         return id;
     }
@@ -226,10 +209,4 @@ public class Annonce  {
         return "Annonce{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", date_creation=" + date_creation + ", date_update=" + date_update + ", prix=" + prix + ", region=" + region + ", etat=" + etat + ", photo=" + photo + ", photo_updated_at=" + photo_updated_at + ", likes=" + likes + ", views=" + views + ", categorie_id=" + categorie_id + ", user_id=" + user_id + ", lib=" + lib + ", nomPrenom=" + nomPrenom + '}';
     }
 
-
-    
-
-  
-    
-    
 }

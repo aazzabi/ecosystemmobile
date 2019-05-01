@@ -20,6 +20,7 @@ public class PublicationForum {
     private String description;
     private String etat;
     private String categorie;
+    private int categorieId;
     private int createdBy;
     private String createdByName;
     private Calendar createdAt;
@@ -34,6 +35,17 @@ public class PublicationForum {
         this.nbrVues = 0;
         this.commentaires = new ArrayList();
     }
+
+    public PublicationForum(String titre, String description, int categorieId, int idUser) {
+        this.titre = titre;
+        this.description = description;
+        this.categorieId = categorieId;
+        this.createdBy = idUser;
+        this.etat = "publié";
+        this.nbrVues = 0;
+        this.commentaires = new ArrayList();
+    }
+    
 
     public int getId() {
         return id;
@@ -121,6 +133,14 @@ public class PublicationForum {
 
     public void setCreatedByName(String createdByName) {
         this.createdByName = createdByName;
+    }
+
+    public int getCategorieId() {
+        return categorieId;
+    }
+
+    public void setCategorieId(int categorieId) {
+        this.categorieId = categorieId;
     }
     
     @Override

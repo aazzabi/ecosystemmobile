@@ -74,7 +74,7 @@ public class SignInForm extends BaseForm {
 				if (username.getText() != "" || password.getText() != "") {
 					ServiceUser ser = new ServiceUser();
                                     
-					Utilisateur u = ser.CheckLoginData(username.getText(), password.getText());
+				 	Utilisateur u = ser.CheckLoginData(username.getText(), password.getText());
 					if (u == null) {
 						Dialog.show("Wrong Credentials", "Please verify your username and password.", "Ok", "");
 						username.setText("");

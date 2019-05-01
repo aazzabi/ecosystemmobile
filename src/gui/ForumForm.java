@@ -8,21 +8,29 @@ package gui;
 import com.codename1.components.FloatingHint;
 import com.codename1.components.ImageViewer;
 import com.codename1.ui.Button;
+import com.codename1.ui.ButtonGroup;
 import com.codename1.ui.Component;
+import static com.codename1.ui.Component.LEFT;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
+import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.Font;
 import com.codename1.ui.Form;
+import com.codename1.ui.Graphics;
 import com.codename1.ui.Image;
 import com.codename1.ui.InfiniteContainer;
 import com.codename1.ui.Label;
+import com.codename1.ui.RadioButton;
+import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.layouts.GridLayout;
+import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.RoundRectBorder;
 import com.codename1.ui.util.Resources;
 import entities.Annonce;
@@ -49,6 +57,11 @@ public class ForumForm extends BaseForm {
     Label publisher;
     Container pubs;
     Container cnt ;
+    Container firstChild;
+    private TextField rechercher;
+    private Button btnRechercher;
+    private Button btnAdd;
+
     private ArrayList<PublicationForum> publications = new ArrayList<>();
 
     public ForumForm(Resources res) {
@@ -57,20 +70,35 @@ public class ForumForm extends BaseForm {
        Toolbar tb = new Toolbar(true);
        setToolbar(tb);
        getTitleArea().setUIID("Container");
-       setTitle("Newsfeed");
        getContentPane().setScrollVisible(false);
-       super.addSideMenu(res);   
+//       super.addSideMenu(res);  
+       this.header("forum w nagham");
        ForumService FrmService = new ForumService();
-       cnt = new Container();
+       cnt = new Container(BoxLayout.y());
        
-       Button Btn = new Button(" + ");
-       cnt.add(Btn);
+       firstChild = new Container(BoxLayout.x());
+       
+       rechercher = new TextField();
+       btnAdd = new Button("Ajouter une publication ");
+       btnRechercher = new Button("Chercher");
+       
+       firstChild.add(rechercher);
+       firstChild.add(btnRechercher);
+       
+       cnt.add(btnAdd);
+       
+       btnAdd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                (new NewPublicationForm(res)).show();
+            }}
+       );
        
        Container ic = new InfiniteContainer() {
             @Override
             public Component[] fetchComponents(int index, int amount) {
                 if (index == 0) {
-                    publications = FrmService.getList2();
+                    publications = FrmService.getAllPublication();
                     amount= publications.size();
                     
                 }
@@ -96,6 +124,7 @@ public class ForumForm extends BaseForm {
                         ls1.add(lbl_name);
                         ls1.add(lbl_desc);
                         ls1.add(lbl_etat);
+                        ls1.add(new Label("--------------------------------------------------------------------------"));
                         element.add(ls);
                         ls.add(ls1);
                         Button b = new Button("Button");
@@ -103,7 +132,7 @@ public class ForumForm extends BaseForm {
                             @Override
                             public void actionPerformed(ActionEvent evt) {
 //                                Dialog.show("Info", a.getTitre(), "ok", "");
-                                new DetailsPublication(res);
+                                (new DetailsPublication(res, a)).show();
                             }
                         });
                         element.setLeadComponent(b);
@@ -115,67 +144,58 @@ public class ForumForm extends BaseForm {
         };
         ic.setScrollableY(false);
         
+        cnt.add(firstChild);
         cnt.add(ic);
         super.add(cnt);       
-       
-//       Button signIn = new Button("Sign In");
-//       Container content = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-//       content.add(signIn);
-//       content.setScrollableY(true);
-//       f.add(content);
-//       f.show();
-       
-//       Container pubs = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-//       ForumService service = new ForumService();
-//
-//       for (PublicationForum ev : service.getList2() ) 
-//       {
-//           Container pubContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
-//           Container detailsContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-//           
-//           titre= new Label();
-//           publisher=new Label();
-//           description=new Label();
-//           etat = new Label();
-////           nbr_vues = new Label();
-//           
-//           titre.setText(ev.getTitre());
-////           publisher.setText("Par  :"+ev.getCreatedByName());
-//           description.setText(ev.getDescription());
-//           etat.setText(ev.getEtat());
-////           nbr_vues.setText(String.valueOf(ev.getNbrVues()));
-////            date.setText("Cree le " +ev.getDate().toString());
-//           System.out.println("hellllll");
-//           detailsContainer.add(titre);
-//           detailsContainer.add(description);
-//           detailsContainer.add(etat);
-////           detailsContainer.add(publisher);
-////           detailsContainer.add(nbr_vues);
-//           
-//           pubContainer.add(detailsContainer);
-//           Button detailsPub = new Button(); 
-//           detailsPub.addActionListener((e)->
-//           {
-//               publication = ev; 
-//               new DetailsPublication(res);
-//           });
-//           pubContainer.setLeadComponent(detailsPub);
-//           pubs.add(pubContainer);
-//       }
-//       
-//        f.add(pubs);
-//        f.show();
-//        super.add(f);
-//        super.add(pubs);
     }
-//
-//    public Form getF() {
-//        return f;
-//    }
-//
-//    public void setF(Form f) {
-//        this.f = f;
-//    }
-//    
+    
+     private void updateArrowPosition(Button b, Label arrow) {
+        arrow.getUnselectedStyle().setMargin(LEFT, b.getX() + b.getWidth() / 2 - arrow.getWidth() / 2);
+        arrow.getParent().repaint();
+
+    }
+
+    private void bindButtonSelection(Button b, Label arrow) {
+        b.addActionListener(e -> {
+            if (b.isSelected()) {
+                updateArrowPosition(b, arrow);
+            }
+        });
+    }
+    public void header(String titre){
+        ButtonGroup bg = new ButtonGroup();
+        int size = Display.getInstance().convertToPixels(1);
+        Image unselectedWalkthru = Image.createImage(size, size, 0);
+        Graphics g = unselectedWalkthru.getGraphics();
+        g.setColor(0xffffff);
+        g.setAlpha(100);
+        g.setAntiAliased(true);
+        g.fillArc(0, 0, size, size, 0, 360);
+        Image selectedWalkthru = Image.createImage(size, size, 0);
+        g = selectedWalkthru.getGraphics();
+        g.setColor(0xffffff);
+        g.setAntiAliased(true);
+        g.fillArc(0, 0, size, size, 0, 360);
+        super.addSideMenu(res);
+
+        ButtonGroup barGroup = new ButtonGroup();
+        RadioButton all = RadioButton.createToggle(titre, barGroup);
+        all.setUIID("SelectBar");
+        
+        Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
+
+        add(LayeredLayout.encloseIn(
+                GridLayout.encloseIn(1, all),
+                FlowLayout.encloseBottom(arrow)
+        ));
+
+        all.setSelected(true);
+        arrow.setVisible(false);
+        addShowListener(e -> {
+            arrow.setVisible(false);
+            updateArrowPosition(all, arrow);
+        });
+        bindButtonSelection(all, arrow);
+    }
     
 }
