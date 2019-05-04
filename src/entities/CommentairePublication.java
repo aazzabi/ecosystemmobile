@@ -15,6 +15,7 @@ public class CommentairePublication {
     private int id;
     private int createdBy;
     private String description;
+    private String createdByPhoto;
     private String createdByName;
     private int idPublication;
     private String publicationName;
@@ -121,6 +122,14 @@ public class CommentairePublication {
         return photo;
     }
 
+    public String getCreatedByPhoto() {
+        return createdByPhoto;
+    }
+
+    public void setCreatedByPhoto(String createdByPhoto) {
+        this.createdByPhoto = createdByPhoto;
+    }
+    
     @Override
     public String toString() {
         return "CommentairePublication{" + "id=" + id + ", createdBy=" + createdBy + ", description=" + description + ", createdByName=" + createdByName + ", idPublication=" + idPublication + ", publicationName=" + publicationName + ", createdAt=" + createdAt + ", nbrSignalisation=" + nbSignalisation + ", likes=" + likes + ", dislikes=" + dislikes + '}';

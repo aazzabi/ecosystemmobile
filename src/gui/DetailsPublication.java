@@ -43,6 +43,7 @@ import entities.Evenement;
 import entities.PublicationForum;
 import entities.SignalisationCommentaire;
 import entities.Utilisateur;
+import java.io.IOException;
 import java.util.ArrayList;
 import services.ForumService;
 import services.ServiceUser;
@@ -93,7 +94,13 @@ public DetailsPublication(Resources res, PublicationForum p) {
     nbr_vues = new Label(String.valueOf(p.getNbrVues())+ " Vue(s)");
     description = new Label(p.getDescription());
     publisher = new Label(p.getCreatedByName());
-    
+    try {
+        Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/user/photo/" + p.getCreatedByPhoto()).fill(300, 300);
+        ImageViewer v = new ImageViewer(img);
+        cnt1.add(v);
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    }
     publisher.setTextPosition(cnt3.RIGHT);
     etat.getAllStyles().setFgColor(0xff000);
     etat.getAllStyles().set3DTextNorth(true);
@@ -104,7 +111,6 @@ public DetailsPublication(Resources res, PublicationForum p) {
     boxStyle.setBgColor(0xeeeeee);
     boxStyle.setMargin(2, 1, 1, 1);
     boxStyle.setPadding(1, 1, 1, 1);
-    
     setSameWidth(titre,nbr_vues,etat);
     cnt1.add(titre);
     cnt1.add(nbr_vues);
@@ -148,6 +154,14 @@ public DetailsPublication(Resources res, PublicationForum p) {
                     Label lbl_publisher = new Label(a.getCreatedByName());
                     Label lbl_dislike = new Label(String.valueOf(a.getDislikes())+" Dislikes");
                     Label lbl_like = new Label(String.valueOf(a.getLikes())+" Likes\n \n \n");
+                    try {
+                        Image imgC = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/user/photo/" + a.getCreatedByPhoto()).fill(200, 200);
+                        ImageViewer v = new ImageViewer(imgC);
+                        ls.add(v);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    
                     ls1.add(lbl_desc);
                     ls1.add(lbl_publisher);
 //                    ls1.add(lbl_like);
@@ -216,8 +230,7 @@ public DetailsPublication(Resources res, PublicationForum p) {
                             lbl_dislike.setText((new ForumService()).getNewDislikes(a)+" Dislikes");
                         }
                     });
-                    ls1.add(new Label("--------------------------------------------------------------------------"));
-//                    element.setLeadComponent(b);
+                    element.add(new Label("--------------------------------------------------------------------------"));
                     elments[i] = element;
                     i++;
             }

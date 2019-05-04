@@ -39,7 +39,8 @@ public class ForumService {
     ArrayList<CommentairePublication> allComments = new ArrayList<>();
     String newDislikesString;
     String newLikesString;
-
+    String photo = "profile.png";
+    
     public ArrayList<PublicationForum> listePublication(String json) throws ParseException {
         ArrayList<PublicationForum> listPublications = new ArrayList<>();
         try {
@@ -70,6 +71,11 @@ public class ForumService {
                 Map<String, Object> user = (Map<String, Object>) obj.get("publication_created_by");
                 String username = user.get("username").toString();
                 
+                if (user.get("photo") == null){
+                    a.setCreatedByPhoto("profile.png");
+                } else {
+                    a.setCreatedByPhoto(user.get("photo").toString());
+                }
                 a.setId( (int) id);
                 a.setTitre(obj.get("titre").toString());
                 a.setDescription(obj.get("description").toString());
@@ -157,6 +163,11 @@ public class ForumService {
                 Map<String, Object> user = (Map<String, Object>) obj.get("commented_by");
                 String nom = user.get("username").toString();
                 
+                if (user.get("photo") == null){
+                    c.setCreatedByPhoto("profile.png");
+                } else {
+                    c.setCreatedByPhoto(user.get("photo").toString());
+                }
                 c.setId( (int) id);
                 c.setDescription(obj.get("description").toString());
                 c.setCreatedByName(nom);

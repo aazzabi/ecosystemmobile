@@ -23,6 +23,7 @@ public class PublicationForum {
     private int categorieId;
     private int createdBy;
     private String createdByName;
+    private String createdByPhoto;
     private Calendar createdAt;
     private int nbrVues;
     private int nbrCommentaires;
@@ -141,6 +142,14 @@ public class PublicationForum {
 
     public void setCategorieId(int categorieId) {
         this.categorieId = categorieId;
+    }
+
+    public String getCreatedByPhoto() {
+        return createdByPhoto;
+    }
+
+    public void setCreatedByPhoto(String createdByPhoto) {
+        this.createdByPhoto = createdByPhoto;
     }
     
     @Override
