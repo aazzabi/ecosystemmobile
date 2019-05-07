@@ -25,11 +25,13 @@ import java.util.Map;
  * @author anasc
  */
 public class AnnonceService {
+
     ArrayList<Annonce> listAnnonce = new ArrayList<>();
     ArrayList<Categorie_Annonce> listCat = new ArrayList<>();
-     public void ajouterAnnonce(Annonce a) {
+
+    public void ajouterAnnonce(Annonce a) {
         ConnectionRequest con = new ConnectionRequest();
-        String Url = "http://localhost/ecosystemweb/web/app_dev.php/annonceApi/new?titre="+ a.getTitre()+"&description="+a.getDescription()+"&prix="+ a.getPrix().toString() + "&photo=" + a.getPhoto() + "&categorie=" + a.getCategorie_id() + "&user=" + a.getUser_id() + "&region=" + a.getRegion();
+        String Url = "http://localhost/ecosystemweb/web/app_dev.php/annonceApi/new?titre=" + a.getTitre() + "&description=" + a.getDescription() + "&prix=" + a.getPrix().toString() + "&photo=" + a.getPhoto() + "&categorie=" + a.getCategorie_id() + "&user=" + a.getUser_id() + "&region=" + a.getRegion();
         con.setUrl(Url);
         con.addResponseListener((e) -> {
             String str = new String(con.getResponseData());
@@ -38,11 +40,10 @@ public class AnnonceService {
         });
         NetworkManager.getInstance().addToQueueAndWait(con);
     }
-     
-     public void supprimerAnnonce(int id)
-     {
-         ConnectionRequest con = new ConnectionRequest();
-        String Url = "http://localhost/ecosystemweb/web/app_dev.php/annonceApi/delete/"+id;
+
+    public void UpdateLikesAnnonce(int id) {
+        ConnectionRequest con = new ConnectionRequest();
+        String Url = "http://localhost/ecosystemweb/web/app_dev.php/annonceApi/likes/" + id;
         con.setUrl(Url);
         con.addResponseListener((e) -> {
             String str = new String(con.getResponseData());
@@ -50,8 +51,21 @@ public class AnnonceService {
 
         });
         NetworkManager.getInstance().addToQueueAndWait(con);
-     }
-      public ArrayList<Annonce> parseListTaskJsonAnnonce(String json) throws ParseException {
+    }
+
+    public void supprimerAnnonce(int id) {
+        ConnectionRequest con = new ConnectionRequest();
+        String Url = "http://localhost/ecosystemweb/web/app_dev.php/annonceApi/delete/" + id;
+        con.setUrl(Url);
+        con.addResponseListener((e) -> {
+            String str = new String(con.getResponseData());
+            //System.out.println(str);//Affichage de la réponse serveur sur la console
+
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+    }
+
+    public ArrayList<Annonce> parseListTaskJsonAnnonce(String json) throws ParseException {
 
         ArrayList<Annonce> listAnnonce = new ArrayList<>();
 
@@ -83,9 +97,8 @@ public class AnnonceService {
                 e.setPhoto(obj.get("photo").toString());
                 e.setViews((int) Float.parseFloat(obj.get("views").toString()));
                 e.setLikes((int) Float.parseFloat(obj.get("likes").toString()));
-
-                System.out.println(e);
-
+                e.setNote(Float.parseFloat(obj.get("note").toString()));
+                //System.out.println(e);
                 listAnnonce.add(e);
 
             }
@@ -98,12 +111,12 @@ public class AnnonceService {
         de la base de données à travers un service web
         
          */
-        System.out.println(listAnnonce);
+        // System.out.println(listAnnonce);
         return listAnnonce;
 
     }
-      
-       public ArrayList<Categorie_Annonce> parseListTaskJsonCat(String json) throws ParseException {
+
+    public ArrayList<Categorie_Annonce> parseListTaskJsonCat(String json) throws ParseException {
 
         ArrayList<Categorie_Annonce> ListCat = new ArrayList<>();
 
@@ -119,7 +132,7 @@ public class AnnonceService {
                 float id = Float.parseFloat(obj.get("id").toString());
                 e.setId((int) id);
                 e.setLibelle(obj.get("libelle").toString());
-                System.out.println(e);
+                //System.out.println(e);
 
                 ListCat.add(e);
 
@@ -133,12 +146,12 @@ public class AnnonceService {
         de la base de données à travers un service web
         
          */
-        System.out.println(ListCat);
+        //System.out.println(ListCat);
         return ListCat;
 
     }
-       
-       public ArrayList<Annonce> getAllAnnonces() {
+
+    public ArrayList<Annonce> getAllAnnonces() {
         ConnectionRequest con = new ConnectionRequest();
         con.setUrl("http://localhost/ecosystemweb/web/app_dev.php/annonceApi/");
         con.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -147,7 +160,7 @@ public class AnnonceService {
                 AnnonceService ser = new AnnonceService();
                 try {
                     listAnnonce = ser.parseListTaskJsonAnnonce(new String(con.getResponseData()));
-                    System.out.println(listAnnonce);
+                    // System.out.println(listAnnonce);
                 } catch (ParseException ex) {
                     ex.printStackTrace();
                 }
@@ -156,8 +169,8 @@ public class AnnonceService {
         NetworkManager.getInstance().addToQueueAndWait(con);
         return listAnnonce;
     }
-       
-       public ArrayList<Categorie_Annonce> getAllCategories() {
+
+    public ArrayList<Categorie_Annonce> getAllCategories() {
         ConnectionRequest con = new ConnectionRequest();
         con.setUrl("http://localhost/ecosystemweb/web/app_dev.php/annonceApi/categories");
         con.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -175,8 +188,8 @@ public class AnnonceService {
         NetworkManager.getInstance().addToQueueAndWait(con);
         return listCat;
     }
-       
-        public ArrayList<Annonce> getAnnonceById(int id) {
+
+    public ArrayList<Annonce> getAnnonceById(int id) {
         ConnectionRequest con = new ConnectionRequest();
         con.setUrl("http://localhost/ecosystemweb/web/app_dev.php/annonceApi/annonce/" + id);
         con.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -185,7 +198,7 @@ public class AnnonceService {
                 AnnonceService ser = new AnnonceService();
                 try {
                     listAnnonce = ser.parseListTaskJsonAnnonce(new String(con.getResponseData()));
-                   //System.out.println(listTasks);
+                    //System.out.println(listTasks);
                 } catch (ParseException ex) {
                     ex.printStackTrace();
                 }
@@ -194,30 +207,112 @@ public class AnnonceService {
         NetworkManager.getInstance().addToQueueAndWait(con);
         return listAnnonce;
     }
-        public ArrayList<String> getRegion(){
-            ArrayList<String> reg = new ArrayList<>();
-            reg.add("Tunis");
-            reg.add("Ariana");
-            reg.add("Manouba");
-            reg.add("Ben Arous");
-            reg.add("Bizerte");
-            reg.add("Béja");
-            reg.add("Jendouba");
-            reg.add("Siliana");
-            reg.add("Kasserine");
-            reg.add("Sidi Bouzid");
-            reg.add("Gafsa");
-            reg.add("Tozeur");
-            reg.add("Kébili");
-            reg.add("Tataouine");
-            reg.add("Médenine");
-            reg.add("Gabès");
-            reg.add("Sfax");
-            reg.add("Kairouan");
-            reg.add("Mahdia");
-            reg.add("Monastir");
-            reg.add("Zaghouan");
-            reg.add("Nabeul");
-            return  reg;
-        }
+
+    public ArrayList<Annonce> getAnnoncesByCategorie(int id) {
+        ConnectionRequest con = new ConnectionRequest();
+        con.setUrl("http://localhost/ecosystemweb/web/app_dev.php/annonceApi/categorie/" + id);
+        con.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                AnnonceService ser = new AnnonceService();
+                try {
+                    listAnnonce = ser.parseListTaskJsonAnnonce(new String(con.getResponseData()));
+                    //System.out.println(listTasks);
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+        return listAnnonce;
+    }
+
+    public void UpdateViwesAnnonce(int id) {
+        ConnectionRequest con = new ConnectionRequest();
+        String Url = "http://localhost/ecosystemweb/web/app_dev.php/annonceApi/viwes/"+id;
+        con.setUrl(Url);
+        con.addResponseListener((e) -> {
+            String str = new String(con.getResponseData());
+            //System.out.println(str);//Affichage de la réponse serveur sur la console
+
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+    }
+    
+     public void UpdateNoteAnnonce(int id,float note) {
+        ConnectionRequest con = new ConnectionRequest();
+        String Url = "http://localhost/ecosystemweb/web/app_dev.php/annonceApi/notes/"+id+"/"+note;
+        con.setUrl(Url);
+        con.addResponseListener((e) -> {
+            String str = new String(con.getResponseData());
+            //System.out.println(str);//Affichage de la réponse serveur sur la console
+
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+    }
+
+    public ArrayList<String> getRegion() {
+        ArrayList<String> reg = new ArrayList<>();
+        reg.add("Tunis");
+        reg.add("Ariana");
+        reg.add("Manouba");
+        reg.add("Ben Arous");
+        reg.add("Bizerte");
+        reg.add("Béja");
+        reg.add("Jendouba");
+        reg.add("Siliana");
+        reg.add("Kasserine");
+        reg.add("Sidi Bouzid");
+        reg.add("Gafsa");
+        reg.add("Tozeur");
+        reg.add("Kébili");
+        reg.add("Tataouine");
+        reg.add("Médenine");
+        reg.add("Gabès");
+        reg.add("Sfax");
+        reg.add("Kairouan");
+        reg.add("Mahdia");
+        reg.add("Monastir");
+        reg.add("Zaghouan");
+        reg.add("Nabeul");
+        return reg;
+    }
+    
+    public ArrayList<Annonce> tirerAnnonces(String tr) {
+        ConnectionRequest con = new ConnectionRequest();
+        con.setUrl("http://localhost/ecosystemweb/web/app_dev.php/annonceApi/trier/" + tr);
+        con.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                AnnonceService ser = new AnnonceService();
+                try {
+                    listAnnonce = ser.parseListTaskJsonAnnonce(new String(con.getResponseData()));
+                    //System.out.println(listTasks);
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+        return listAnnonce;
+    }
+    
+    public ArrayList<Annonce> recherchAnnonces(String key) {
+        ConnectionRequest con = new ConnectionRequest();
+        con.setUrl("http://localhost/ecosystemweb/web/app_dev.php/annonceApi/recherche?keyWord=" + key);
+        con.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                AnnonceService ser = new AnnonceService();
+                try {
+                    listAnnonce = ser.parseListTaskJsonAnnonce(new String(con.getResponseData()));
+                    //System.out.println(listTasks);
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(con);
+        return listAnnonce;
+    }
 }

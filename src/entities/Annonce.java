@@ -46,6 +46,8 @@ public class Annonce {
     private String lib;
 
     private String nomPrenom;
+    
+    private float note;
 
     public Annonce() {
     }
@@ -204,6 +206,14 @@ public class Annonce {
         this.nomPrenom = nomPrenom;
     }
 
+    public float getNote() {
+        return note;
+    }
+
+    public void setNote(float note) {
+        this.note = note;
+    }
+        
     @Override
     public String toString() {
         return "Annonce{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", date_creation=" + date_creation + ", date_update=" + date_update + ", prix=" + prix + ", region=" + region + ", etat=" + etat + ", photo=" + photo + ", photo_updated_at=" + photo_updated_at + ", likes=" + likes + ", views=" + views + ", categorie_id=" + categorie_id + ", user_id=" + user_id + ", lib=" + lib + ", nomPrenom=" + nomPrenom + '}';

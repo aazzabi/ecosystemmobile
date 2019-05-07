@@ -11,21 +11,30 @@ import com.codename1.ui.ButtonGroup;
 import static com.codename1.ui.Component.LEFT;
 import com.codename1.ui.Container;
 import com.codename1.ui.Display;
+import com.codename1.ui.Font;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Graphics;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.RadioButton;
+import com.codename1.ui.Slider;
 import com.codename1.ui.Toolbar;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.layouts.LayeredLayout;
+import com.codename1.ui.plaf.Border;
+import com.codename1.ui.plaf.RoundBorder;
+import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 import entities.Annonce;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import services.AnnonceService;
 
 /**
  *
@@ -40,6 +49,8 @@ public class ShowAnnonceForm extends BaseForm {
     public ShowAnnonceForm(Resources res, Annonce a) throws IOException {
         super("Show Annonce", BoxLayout.y());
         this.res = res;
+        AnnonceService as = new AnnonceService();
+        as.UpdateViwesAnnonce(a.getId());
         cnt = new Container(BoxLayout.y());
         Toolbar tb = new Toolbar(true);
         setToolbar(tb);
@@ -131,15 +142,45 @@ public class ShowAnnonceForm extends BaseForm {
         lbl_viwes.setUIID("Label");
         row6.add(lbl_likes);
         row6.add(lbl_viwes);
+        Slider starRank = new Slider();
+        starRank.setEditable(true);
+        starRank.setMinValue(0);
+        starRank.setMaxValue(10);
+        Font fnt = Font.createTrueTypeFont("native:MainLight", "native:MainLight").
+                derive(Display.getInstance().convertToPixels(5, true), Font.STYLE_PLAIN);
+        Style s = new Style(0xffff33, 0, fnt, (byte) 0);
+        Image fullStar = FontImage.createMaterial(FontImage.MATERIAL_STAR, s).toImage();
+        s.setOpacity(100);
+        s.setFgColor(0);
+        Image emptyStar = FontImage.createMaterial(FontImage.MATERIAL_STAR, s).toImage();
+        initStarRankStyle(starRank.getSliderEmptySelectedStyle(), emptyStar);
+        initStarRankStyle(starRank.getSliderEmptyUnselectedStyle(), emptyStar);
+        initStarRankStyle(starRank.getSliderFullSelectedStyle(), fullStar);
+        initStarRankStyle(starRank.getSliderFullUnselectedStyle(), fullStar);
+        starRank.setPreferredSize(new Dimension(fullStar.getWidth() * 5, fullStar.getHeight()));
+        starRank.setProgress((int) a.getNote());
+        Container row7 = new Container(BoxLayout.x());
+        row7.add(starRank);
         cloum.add(row1);
         cloum.add(row2);
         cloum.add(row3);
         cloum.add(row4);
         cloum.add(row5);
         cloum.add(row6);
+        cloum.add(row7);
         cnt.add(v);
         cnt.add(cloum);
         add(cnt);
+
+        starRank.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                float x = starRank.getProgress();
+                AnnonceService as = new AnnonceService();
+                as.UpdateNoteAnnonce(a.getId(), x);
+                starRank.setEditable(false);
+            }
+        });
     }
 
     private void updateArrowPosition(Button b, Label arrow) {
@@ -152,7 +193,15 @@ public class ShowAnnonceForm extends BaseForm {
         b.addActionListener(e -> {
             if (b.isSelected()) {
                 updateArrowPosition(b, arrow);
+                
             }
         });
+    }
+
+    private void initStarRankStyle(Style s, Image star) {
+        s.setBackgroundType(Style.BACKGROUND_IMAGE_TILE_BOTH);
+        s.setBorder(Border.createEmpty());
+        s.setBgImage(star);
+        s.setBgTransparency(0);
     }
 }
