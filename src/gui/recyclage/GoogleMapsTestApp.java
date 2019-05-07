@@ -5,9 +5,7 @@
  */
 package gui.recyclage;
 
-//import com.alpha.Entite.Covoiturage;
-//import com.alpha.Entite.Hotel;
-//import com.alpha.Entite.Stadium;
+ 
 import entities.Host;
 import com.codename1.components.ToastBar;
 import com.codename1.io.ConnectionRequest;
@@ -267,7 +265,8 @@ public class GoogleMapsTestApp {
         
         Button btnMoveCamera = new Button("Retour");
         btnMoveCamera.addActionListener(e->{
-            HostMapView.ShowForm();
+            new HostMapView(resss,h).show();
+            
         });
          Button btnAddMarker = new Button("Voir Marqueur Maps");
         btnAddMarker.addActionListener(e->{

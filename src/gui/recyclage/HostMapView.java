@@ -22,29 +22,34 @@ import entities.Host;
 import com.codename1.components.ImageViewer;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
+import com.codename1.ui.EncodedImage;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.Toolbar;
+import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.util.Resources;
-
+import gui.BaseForm;
 /**
  *
  * @author Sof
  */
-public class HostMapView extends BaseGui{
+public class HostMapView extends BaseForm{
     
     public HostMapView(Resources res,Host h)
     {
     
 	 super();
          
-        //Toolbar tb = new Toolbar(true);
-        //setToolbar(tb);
-        //getTitleArea().setUIID("Container");
-        //setTitle("");
-        //getContentPane().setScrollVisible(false);
-        ShowForm();
-        //super.addSideMenu(res);
+         Toolbar tb = new Toolbar(true);
+       setToolbar(tb);
+       getTitleArea().setUIID("Container");
+        setTitle("");
+       getContentPane().setScrollVisible(false);
+        //ShowForm();
+        show();
+        super.addSideMenu(res);
         
         Container cncn = new Container();
        ImageViewer im = new ImageViewer();
@@ -53,8 +58,8 @@ public class HostMapView extends BaseGui{
         EncodedImage encImage = EncodedImage.createFromImage(placeholder1, true);
 
         im.setImage(URLImage.createToStorage(encImage, "High" + h.getImage(), h.getImage(), URLImage.RESIZE_SCALE_TO_FILL));
-
-        cncn.add(im);*/
+*/
+        cncn.add(im); 
        
         Label InfoStade = new Label("Details : ");
         Label nom = new Label("Name : "+h.getOwner());
@@ -77,8 +82,8 @@ public class HostMapView extends BaseGui{
          ));
         
        cncn.setUIID("InputContainerBackgroundSofien");
-            AddBlocks1x1(cncn);
-     
+            //AddBlocks1x1(cncn);
+     add(cncn);
         }
     }
     
