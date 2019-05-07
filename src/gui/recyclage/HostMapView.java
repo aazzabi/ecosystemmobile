@@ -44,7 +44,7 @@ public class HostMapView extends BaseForm{
        setToolbar(tb);
        getTitleArea().setUIID("Container");
        setTitle("Maps LOCALISATION");
-       getContentPane().setScrollVisible(false);
+       getContentPane().setScrollVisible((false));
        
        super.addSideMenu(res);
        Container cncn = new Container();
@@ -73,7 +73,8 @@ public class HostMapView extends BaseForm{
                 BorderLayout.center(InfoStade),nom,NbEtoiles,capacity,city,BorderLayout.center(Voir)
         ));
       cncn.setUIID("InputContainerBackgroundSofien");
-      add(cncn);
+        Container add;
+        add = add(cncn);
        }
    }
 

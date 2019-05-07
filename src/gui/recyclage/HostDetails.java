@@ -12,6 +12,7 @@ import com.codename1.ui.Container;
 import com.codename1.ui.Label;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
+import java.io.IOException;
 
 /**
  *
@@ -21,11 +22,11 @@ public class HostDetails  extends BaseGui{
     
     private Host CurrentHost = new Host();
     
-    public HostDetails(Host HostToOpen){
+    public HostDetails(Host HostToOpen) throws IOException{
         super();
          Resources res ; 
-            res = UIManager.initFirstTheme("/theme");   
-             
+            //res = UIManager.initFirstTheme("/theme");   
+             res  = Resources.openLayered("/theme") ; 
 
                   
 
@@ -58,6 +59,17 @@ public class HostDetails  extends BaseGui{
         });
         
         return ModifyButton;
+        
+    }
+     private Button MakeParticipateButton(){
+        Button ParticipateButton = new Button("Participer ! ");
+       ParticipateButton.addActionListener((evt) -> {
+            new HostParticipate(CurrentHost);
+        System.out.println("<HostList::Participate  HOST > Displaying host : "+ CurrentHost.getOwner());
+
+        });
+        
+        return ParticipateButton;
         
     }
       private Button MakeMapsButton(Resources res ){
