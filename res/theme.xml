@@ -381,6 +381,8 @@
         <val key="WhiteSeparator.margin" value="0.0,0.0,0.0,0.0" />
         <val key="WhiteSeparator.padding" value="1.0,1.0,1.0,1.0" />
         <val key="WhiteSeparator.transparency" value="26" />
+        <val key="bgImage" value="pannel.png" />
+        <val key="bgType" value="2" />
         <font key="commentaires.font" type="ttf" face="0" style="2" size="0" name="native:ItalicLight" family="native:ItalicLight" sizeSettings="4" actualSize="19.0" />
         <font key="ktiba_kbira.font" type="system" face="32" style="1" size="16" />
         <val key="transparency" value="0" />
