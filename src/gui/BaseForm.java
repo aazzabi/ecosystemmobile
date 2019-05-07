@@ -22,6 +22,8 @@ import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 import entities.Utilisateur;
+import gui.recyclage.HomeGui;
+import gui.recyclage.HostList;
 import java.io.IOException;
 
 /**
@@ -85,6 +87,8 @@ public class BaseForm extends Form {
         tb.addMaterialCommandToSideMenu("A", FontImage.MATERIAL_UPDATE, e -> new AccueilForm(res).show());
         tb.addMaterialCommandToSideMenu("B", FontImage.MATERIAL_PARTY_MODE, e -> new AccueilForm(res).show());
         tb.addMaterialCommandToSideMenu("Annonce", FontImage.MATERIAL_ADD_A_PHOTO, e -> new AllAnonces(res).show());
+      tb.addMaterialCommandToSideMenu("Recyclage", FontImage.MATERIAL_ADD_A_PHOTO, e -> new HomeGui().ShowForm());
+
         tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> {
             try {
                 Database db = Database.openOrCreate("EcoSystem.db");
