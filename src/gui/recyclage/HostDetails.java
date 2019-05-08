@@ -22,11 +22,11 @@ public class HostDetails  extends BaseGui{
     
     private Host CurrentHost = new Host();
     
-    public HostDetails(Host HostToOpen) throws IOException{
+    public HostDetails(Host HostToOpen) {
         super();
          Resources res ; 
-            //res = UIManager.initFirstTheme("/theme");   
-             res  = Resources.openLayered("/theme") ; 
+           res = UIManager.initFirstTheme("/theme");   
+           //  res  = Resources.openLayered("/theme") ; 
 
                   
 
@@ -44,7 +44,7 @@ public class HostDetails  extends BaseGui{
             HostService.DeleteHost(CurrentHost.getID());
            MainForm.refreshTheme();
         });
-        Container CurrentContainer = CreateContainer_Y(Name_Label, Places_Label, MakeModifyButton(),MakeMapsButton(res), Delete_Button);
+        Container CurrentContainer = CreateContainer_Y(Name_Label, Places_Label, MakeModifyButton(),MakeMapsButton(res),MakeParticipateButton(), Delete_Button);
         MainForm.add(CurrentContainer);
     
    

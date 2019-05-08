@@ -10,13 +10,14 @@ import com.codename1.io.rest.Response;
 import com.codename1.io.rest.Rest;
 import entities.Host;
 import com.codename1.ui.Button;
-import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
 import com.codename1.ui.Image;
 import com.codename1.ui.layouts.GridLayout;
-import com.codename1.util.Base64;
 import java.util.Map;
-
+import com.codename1.ui.Dialog;
+import com.codename1.util.Base64;
+import com.wefeel.QRMaker.QRMaker;
+import entities.Utilisateur;
 /**
  *
  * @author Hiro
@@ -36,9 +37,9 @@ public class HostParticipate extends BaseGui{
     }
     
     private void MakeInterface(){
-      	 String accountSID = "AC0d979902ef3a68ca297b9628844d22f6";
-String authToken = "52a239517f4998fa7ea9da4bebc55cc0";
-String fromPhone = "+18606136490";
+      	 String accountSID = "ACeff1a322ac15e1b89c8851cdab1e2766";
+String authToken = "9b8c6660c2962fa3dfa62fee7884f5b7";
+String fromPhone = "+18577632054";
 		Response<Map> result = Rest.post("https://api.twilio.com/2010-04-01/Accounts/" + accountSID + "/Messages.json").
         queryParam("To", "+21654559260").
         queryParam("From", fromPhone).
@@ -47,7 +48,7 @@ String fromPhone = "+18606136490";
         getAsJsonMap();
 		
 
-Image img = QRMaker.QRCode(String.valueOf(game.getId()+SimpleUser.current_user.getId()*2341));
+Image img = QRMaker.QRCode(String.valueOf(CurrentHost.getOwner()+Utilisateur.current_user.getId()*2341));
 ImageViewer image= new ImageViewer(img);
 
 Dialog.show("Success", "Vous avez participer avec succés à la mission nommee :   "+CurrentHost.getOwner()+" ! ! ! ", "OK", null);
@@ -60,7 +61,11 @@ Dialog d = new Dialog("QR Code");
         Button imgg = new Button(image.getImage().fill(width, height));
 d.add(GridLayout.encloseIn(1, imgg));
 d.show();
-        
+  Button btnMoveCamera = new Button("Retour");
+        btnMoveCamera.addActionListener(e->{
+            HostList.ShowForm();
+            
+        });
 
 
 
