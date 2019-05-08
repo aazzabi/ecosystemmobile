@@ -35,18 +35,18 @@ import gui.BaseForm;
  *
  * @author Sof
  */
-public class HostMapView extends BaseForm{
+public class HostMapView extends BaseGui{
     
     public HostMapView(Resources res,Host h)
     {
-    super("", BoxLayout.y());
+    //super("", BoxLayout.y());
        Toolbar tb = new Toolbar(true);
-       setToolbar(tb);
+     /*  setToolbar(tb);
        getTitleArea().setUIID("Container");
        setTitle("Maps LOCALISATION");
        getContentPane().setScrollVisible((false));
-       
-       super.addSideMenu(res);
+     
+       super.addSideMenu(res);  */
        Container cncn = new Container();
       ImageViewer im = new ImageViewer();
 /*
@@ -73,8 +73,12 @@ public class HostMapView extends BaseForm{
                 BorderLayout.center(InfoStade),nom,NbEtoiles,capacity,city,BorderLayout.center(Voir)
         ));
       cncn.setUIID("InputContainerBackgroundSofien");
-        Container add;
-        add = add(cncn);
+       // AddBlocks2x2(cncn);
+                MainForm.add(CreateContainer_Y(cncn));
+
+   
+         
+        
        }
    }
 

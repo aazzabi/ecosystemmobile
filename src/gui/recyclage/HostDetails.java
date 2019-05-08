@@ -76,7 +76,7 @@ public class HostDetails  extends BaseGui{
         Button MapsButton = new Button("Afficher sur Maps");
         MapsButton.addActionListener((evt) -> {
             //Resources res = null ; //Resources.openLayered("/theme")
-            new HostMapView(res, CurrentHost).show(); 
+            new HostMapView(res, CurrentHost) ; 
         System.out.println("<HostList::MAPS  HOST > Displaying host : "+ CurrentHost.getOwner());
 
         });

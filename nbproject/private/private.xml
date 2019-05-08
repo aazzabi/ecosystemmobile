@@ -8,7 +8,6 @@
             <file>file:/C:/ecosystemMobile/src/Utils/UtilityGui.java</file>
             <file>file:/C:/ecosystemMobile/src/entities/PublicationForum.java</file>
             <file>file:/C:/ecosystemMobile/src/Utils/UtilityAction.java</file>
-            <file>file:/C:/ecosystemMobile/src/gui/recyclage/HostList.java</file>
             <file>file:/C:/ecosystemMobile/src/gui/recyclage/HostModify.java</file>
             <file>file:/C:/ecosystemMobile/src/com/mycompany/myapp/MyApplication.java</file>
             <file>file:/C:/ecosystemMobile/src/entities/HostParticipation.java</file>
@@ -19,9 +18,10 @@
             <file>file:/C:/ecosystemMobile/src/gui/recyclage/HostAdd.java</file>
             <file>file:/C:/ecosystemMobile/src/gui/AccueilForm.java</file>
             <file>file:/C:/ecosystemMobile/src/gui/AffichageEvents.java</file>
-            <file>file:/C:/ecosystemMobile/src/gui/recyclage/HostDetails.java</file>
             <file>file:/C:/ecosystemMobile/src/gui/recyclage/HomeGui.java</file>
+            <file>file:/C:/ecosystemMobile/src/gui/recyclage/HostDetails.java</file>
             <file>file:/C:/ecosystemMobile/src/gui/BaseForm.java</file>
+            <file>file:/C:/ecosystemMobile/src/gui/recyclage/HostParticipate.java</file>
             <file>file:/C:/ecosystemMobile/src/gui/SignInForm.java</file>
             <file>file:/C:/ecosystemMobile/src/services/MapContainer.java</file>
             <file>file:/C:/ecosystemMobile/src/gui/recyclage/HostMapView.java</file>

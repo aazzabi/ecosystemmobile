@@ -265,7 +265,7 @@ public class GoogleMapsTestApp {
         
         Button btnMoveCamera = new Button("Retour");
         btnMoveCamera.addActionListener(e->{
-            new HostMapView(resss,h).show();
+            new HostMapView(resss,h) ;
             
         });
          Button btnAddMarker = new Button("Voir Marqueur Maps");
