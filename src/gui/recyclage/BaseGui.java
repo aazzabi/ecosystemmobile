@@ -49,21 +49,21 @@ public class BaseGui {
     private void CreateToolbar(){
         MainToolbar = UtilityGui.CreateToolBar(MainForm);        
 
-        AddToRightBar(FontImage.MATERIAL_HOME, 4, "", () -> {
+        AddToRightBar(FontImage.MATERIAL_HOME, 0, "", () -> {
             
         });
          
-         AddToRightBar(FontImage.MATERIAL_HOME, 4, "", () -> {
+         AddToRightBar(FontImage.MATERIAL_HOME, 0, "", () -> {
             
         });
          
-        AddToRightBar(FontImage.MATERIAL_NATURE, 6, "Recyclage", () -> {
+        AddToRightBar(FontImage.MATERIAL_ASSISTANT, 6, "Recyclage", () -> {
             HostList HostList_Link= new HostList();
         });
-          AddToRightBar(FontImage.MATERIAL_HOME, 4, "", () -> {
+          AddToRightBar(FontImage.MATERIAL_HOME, 0, "", () -> {
             
         });
-          AddToRightBar(FontImage.MATERIAL_HOME, 4, "", () -> {
+          AddToRightBar(FontImage.MATERIAL_HOME, 0, "", () -> {
             
         });
              

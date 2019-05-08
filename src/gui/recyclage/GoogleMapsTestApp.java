@@ -39,11 +39,13 @@ import static gui.recyclage.BaseGui.ShowForm;
  *
  * @author Sof
  */
-public class GoogleMapsTestApp {
+public class GoogleMapsTestApp extends BaseGui  {
+   
      private static final String HTML_API_KEY = "AIzaSyBWeRU02YUYPdwRuMFyTKIXUbHjq6e35Gw";
     private Form current;
   private static final String MAPS_KEY = "AIzaSyB3KhyS-EYfLay-lwqDUE4XEXvIiSkF5Zg";
     public void init(Object context) {
+        
         try {
             Resources theme = Resources.openLayered("/theme");
             UIManager.getInstance().setThemeProps(theme.getTheme(theme.getThemeResourceNames()[0]));
@@ -233,7 +235,9 @@ public class GoogleMapsTestApp {
         Form hi = new Form("Mission's position : ");
         hi.setLayout(new BorderLayout());
         final MapContainer cnt = new MapContainer(HTML_API_KEY);
-        cnt.setMapType(2);
+        MapContainer.isSetCursorSupported() ;
+        
+                cnt.setMapType(2);
         cnt.setCameraPosition(new Coord(geolat, geolong));
          Coord src = new Coord(31.2001, 29.9187);
         Coord dest = new Coord(30.0444, 31.2357);
@@ -252,13 +256,13 @@ public class GoogleMapsTestApp {
         cnt.addMarker(FontImage.createMaterial(FontImage.MATERIAL_LOCATION_ON, s).toEncodedImage(), src, "", "", null);
         cnt.addMarker(FontImage.createMaterial(FontImage.MATERIAL_LOCATION_ON, s).toEncodedImage(), dest, "", "", null);
         
-        FontImage markerImg = FontImage.createMaterial(FontImage.MATERIAL_LOCATION_ON, s, Display.getInstance().convertToPixels(3));
+        FontImage markerImg = FontImage.createMaterial(FontImage.MATERIAL_LOCATION_ON, s, Display.getInstance().convertToPixels(1));
        
          cnt.addMarker(
                     EncodedImage.createFromImage(markerImg, false),
                     cnt.getCameraPosition(),
                     "Hi marker",
-                    "description Optionale ",
+                    "description Optionnel ",
                      evt -> {
                              ToastBar.showMessage("Vous avez clickez sur le Marqueur", FontImage.MATERIAL_PLACE);
                      }
@@ -280,7 +284,7 @@ public class GoogleMapsTestApp {
                     h.getOwner(),
                     h.getLocalisation(),
                      evt -> {
-                             ToastBar.showMessage("It's Here ! ", FontImage.MATERIAL_PLACE);
+                             ToastBar.showMessage("C'est içi ! ", FontImage.MATERIAL_PLACE);
                             
 
                      }
@@ -295,11 +299,11 @@ public class GoogleMapsTestApp {
                         FlowLayout.encloseBottom(btnMoveCamera, btnAddMarker)
                 )
         );
-
-        hi.add(BorderLayout.CENTER, root);
+//root.setUIID("InputContainerBackgroundSofien");
+        hi.add(BorderLayout.OVERLAY, root);
         hi.show();
  
-         ShowForm();
+         //ShowForm();
     }
      
      

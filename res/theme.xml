@@ -117,6 +117,8 @@
         <val key="CenterLink.padUnit" value="2,2,2,2" />
         <val key="CenterLink.padding" value="2.0,2.0,1.0,1.0" />
         <val key="CenterLink.transparency" value="0" />
+        <val key="Container.bgImage" value="transparency.png" />
+        <val key="Container.bgType" value="34" />
         <val key="DatePickerDay.align" value="4" />
         <val key="DatePickerDay.fgColor" value="ffffff" />
         <font key="DatePickerDay.font" type="ttf" face="0" style="0" size="0" name="native:MainThin" family="native:MainThin" sizeSettings="3" actualSize="4.5" />
@@ -442,6 +444,7 @@
         <val key="transparency" value="50" />
     </theme>
     <image name="timeline-background.jpg"  />
+    <image name="transparency.png"  />
     <image name="twitter-logo.png" type="multi"  />
     <image name="welcome-background.jpg"  />
     <image name="welcome-slide-1.png" type="multi"  />

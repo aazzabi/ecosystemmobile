@@ -54,20 +54,21 @@ public class HostMapView extends BaseGui{
         InfoStade.setUIID("SideCommand");
         Button Voir = new Button("Show Location");
         Voir.setUIID("Button");
-        Voir.addActionListener(e->{
+       
+        
+        cncn.add(BoxLayout.encloseY(
+                 BorderLayout.center(InfoStade),nom,NbEtoiles,capacity,city,BorderLayout.center(Voir)
+         ));
+        
+       cncn.setUIID(""); //InputContainerBackgroundSofien
+            AddBlocks1x1(cncn);
+        ShowForm();
+          Voir.addActionListener(e->{
         GoogleMapsTestApp x = new GoogleMapsTestApp();
        h.setGeolat(34.791366);
        h.setGeolong(9.572108);
        System.out.println("latitude = " + h.getGeolat() + "long = " + h.getGeolong() );
         x.start(h.getGeolat(),h.getGeolong(),res,h);
         });
-        
-        cncn.add(BoxLayout.encloseY(
-                 BorderLayout.center(InfoStade),nom,NbEtoiles,capacity,city,BorderLayout.center(Voir)
-         ));
-        
-       cncn.setUIID("InputContainerBackgroundSofien");
-            AddBlocks1x1(cncn);
-         ShowForm();
         }
     }
