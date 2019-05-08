@@ -33,13 +33,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import services.MapContainer;
+import com.codename1.googlemaps.MapContainer;
+import static gui.recyclage.BaseGui.ShowForm;
 /**
  *
  * @author Sof
  */
 public class GoogleMapsTestApp {
-     private static final String HTML_API_KEY = "";
+     private static final String HTML_API_KEY = "AIzaSyBWeRU02YUYPdwRuMFyTKIXUbHjq6e35Gw";
     private Form current;
   private static final String MAPS_KEY = "AIzaSyB3KhyS-EYfLay-lwqDUE4XEXvIiSkF5Zg";
     public void init(Object context) {
@@ -242,7 +243,7 @@ public class GoogleMapsTestApp {
 
         // decode the routes in an arry of coords
         Coord[] coords = decode(encoded);
-             //   System.out.println("COORDS !!! : " + coords);
+             System.out.println("COORDS ! : " + coords);
 
         cnt.addPath(coords);
          Style s = new Style();
@@ -280,6 +281,8 @@ public class GoogleMapsTestApp {
                     h.getLocalisation(),
                      evt -> {
                              ToastBar.showMessage("It's Here ! ", FontImage.MATERIAL_PLACE);
+                            
+
                      }
             );
 
@@ -295,7 +298,8 @@ public class GoogleMapsTestApp {
 
         hi.add(BorderLayout.CENTER, root);
         hi.show();
-
+ 
+         ShowForm();
     }
      
      
