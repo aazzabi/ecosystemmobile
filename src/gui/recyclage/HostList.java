@@ -49,20 +49,23 @@ public class HostList extends BaseGui {
      
      
         for (Host CurrentHost : HostService.GetAllHosts()){
-            
-            //HostData to labels
+           
+            Label borderNom = new Label("NOM : ");
+            Label borderdispo = new Label("PLACE DISPO : ");
+            Label bordergeo = new Label("LOCALISATION : ");
+
             Label Name_Label = new Label(CurrentHost.getOwner());
             Label Places_Label = new Label(CurrentHost.getAvailablePlaces() + "/" + CurrentHost.getTotalPlaces());
             Label Location_Label = new Label(CurrentHost.getLocalisation());
-            Label border = new Label("--------------------------");
-           
+            
             //Listeners
             Name_Label.addPointerReleasedListener((evt) -> {
                 System.out.println("<HostList::DisplayAllHosts> Displaying host : "+ CurrentHost.getOwner());
                 new HostDetails(CurrentHost);
             });
-            Container ContainerTemp= CreateContainer_Y( Name_Label, Places_Label, Location_Label, border);
-            
+            Container ContainerTemp= CreateContainer_Y( borderNom,Name_Label,borderdispo, Places_Label, bordergeo,Location_Label);
+            ContainerTemp.setUIID("Button");
+
             AddBlocks2x2(ContainerTemp);
         }
     }

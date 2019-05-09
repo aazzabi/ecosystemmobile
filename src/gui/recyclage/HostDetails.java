@@ -39,7 +39,7 @@ public class HostDetails extends BaseGui {
         //  res  = Resources.openLayered("/theme") ; 
 
         CurrentHost = HostToOpen;
-                            System.out.println(CurrentHost);
+        System.out.println(CurrentHost.getOwnerID());
 
         MakeInterface(res);
         ShowForm();
@@ -57,32 +57,47 @@ public class HostDetails extends BaseGui {
         Label Name_Label = new Label(CurrentHost.getOwner());
         Label Places_Label = new Label(CurrentHost.getAvailablePlaces() + "/" + CurrentHost.getTotalPlaces());
         MakeModifyButton();
-           Button Delete_Button = new Button("Supprimer");
-            Delete_Button.addActionListener((evt) -> {
-                            System.out.println("current id user : " + Utilisateur.current_user.getId() + "host id : " + CurrentHost.getOwnerID());
+        Button Delete_Button = new Button("Supprimer");
+        Delete_Button.addActionListener((evt) -> {
+            System.out.println("current id user : " + Utilisateur.current_user.getId() + "host id : " + CurrentHost.getOwnerID());
 
-                
-                 if (CurrentHost.getOwnerID() == Utilisateur.current_user.getId()) {
-             HostService.DeleteHost(CurrentHost.getID());
-              MainForm.refreshTheme();
-        } else {
-           Dialog.show("Failure", "Vous ne pouvez pas supprimer une mission qui n'est pas la votre ! ", "OK", null);
+            if (CurrentHost.getOwnerID() == Utilisateur.current_user.getId()) {
+                HostService.DeleteHost(CurrentHost.getID());
+                MainForm.refreshTheme();
+            } else {
+                Dialog.show("Failure", "Vous ne pouvez pas supprimer une mission qui n'est pas la votre ! ", "OK", null);
 
-        }
-               
-               
-            });
-       
- Container CurrentContainer = CreateContainer_Y(imgg, Name_Label, Places_Label, MakeModifyButton(), MakeMapsButton(res), MakeParticipateButton(),Delete_Button);
-            MainForm.add(CurrentContainer);
+            }
+
+        });
+
+
+        Label bordercomm = new Label("LES COMMENTAIRES : ");
+
+        Container CurrentContainer = CreateContainer_Y(imgg, Name_Label, Places_Label, MakeModifyButton(), MakeMapsButton(res), MakeParticipateButton(), Delete_Button, bordercomm);
+        MainForm.add(CurrentContainer);
         ////LES COMMENTAIRES BACLKEND 
+
         for (HostRating Rating : HostService.GetAllRatingHosts()) {
             if (CurrentHost.getID() == Rating.getHostID()) {
 
-                Label comm_Label = new Label(Rating.getComment());
-                Container ContainerTemp = CreateContainer_Y(comm_Label);
-                MainForm.add(ContainerTemp);
+                
+            Label borderNom = new Label("ID du créateur : ");
+            Label borderdispo = new Label("Commentaire  : ");
+            Label bordergeo = new Label("LOCALISATION : ");
+            Label dateborder = new Label("DATE : ");
 
+            Label Nom_Label = new Label(Rating.getOwnerID()+ "/" );
+           
+            Label date_Label = new Label(Rating.getRatingDate()+ "/" );
+            Label geo_Label = new Label(Rating.getRank()+ "/" );
+            
+                Label comm_Label = new Label(Rating.getComment());
+                
+                Container ContainerTemp = CreateContainer_Y(borderNom,Nom_Label,dateborder,date_Label,bordergeo,geo_Label,borderdispo,comm_Label);
+ContainerTemp.setUIID("button"); 
+                MainForm.add(ContainerTemp);
+ 
             }
         }
 

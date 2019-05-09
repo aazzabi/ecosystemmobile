@@ -57,7 +57,7 @@ public class BaseGui {
             
         });
          
-        AddToRightBar(FontImage.MATERIAL_ASSISTANT, 6, "Recyclage", () -> {
+        AddToRightBar(FontImage.MATERIAL_ASSISTANT, 6, "Nos Missions", () -> {
             HostList HostList_Link= new HostList();
         });
           AddToRightBar(FontImage.MATERIAL_HOME, 0, "", () -> {
