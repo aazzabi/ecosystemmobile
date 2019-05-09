@@ -27,18 +27,22 @@
     <image name="Button.borderTopR_1.png" type="multi"  />
     <image name="Button.borderTopR_2.png" type="multi"  />
     <image name="confirmation-background.jpg"  />
+    <image name="creation.png"  />
     <image name="default_profile_picture.png"  />
     <image name="design-application-mobile-CME - Copy (2) - Copy.jpg"  />
     <image name="design-application-mobile-CME - Copy (2).jpg"  />
     <image name="design-application-mobile-CME - Copy (3).jpg"  />
     <image name="design-application-mobile-CME - Copy.jpg"  />
     <image name="design-application-mobile-CME.jpg"  />
+    <image name="details.png"  />
     <image name="dog.jpg"  />
     <image name="eco.jpg"  />
     <image name="facebook-login.png"  />
     <image name="facebook-logo.png" type="multi"  />
     <image name="fondsofien.jpg" type="multi"  />
+    <image name="liste.png"  />
     <image name="logoeco.png"  />
+    <image name="modification.png"  />
     <image name="news-item-1.jpg"  />
     <image name="news-item-2.jpg"  />
     <image name="news-item-3.jpg"  />
@@ -50,6 +54,7 @@
     <image name="on-off-on.png" type="multi"  />
     <image name="profile-background.jpg"  />
     <image name="profile-pic.jpg" type="multi"  />
+    <image name="qr.png"  />
     <image name="SelectBar.borderBottom_1.png" type="multi"  />
     <image name="SelectBar.borderBottomL_1.png" type="multi"  />
     <image name="SelectBar.borderBottomR_1.png" type="multi"  />

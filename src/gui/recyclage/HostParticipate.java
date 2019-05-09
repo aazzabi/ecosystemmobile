@@ -8,21 +8,17 @@ package gui.recyclage;
 import com.codename1.capture.Capture;
 import com.codename1.components.ImageViewer;
 import com.codename1.io.FileSystemStorage;
-import com.codename1.io.rest.Response;
-import com.codename1.io.rest.Rest;
 import entities.Host;
 import com.codename1.ui.Button;
-import com.codename1.ui.Container;
 import com.codename1.ui.Display;
 import com.codename1.ui.Image;
 import com.codename1.ui.layouts.GridLayout;
-import java.util.Map;
 import com.codename1.ui.Dialog;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.ImageIO;
-import com.codename1.util.Base64;
+import com.codename1.ui.util.Resources;
 import com.wefeel.QRMaker.QRMaker;
 import entities.Utilisateur;
-import static gui.recyclage.BaseGui.CreateContainer_Y;
 import java.io.IOException;
 import java.io.OutputStream;
 /**
@@ -37,13 +33,14 @@ public class HostParticipate extends BaseGui{
         super();
         
         CurrentHost = HostToOpen;
-        
-        MakeInterface();
+         Resources res ; 
+           res = UIManager.initFirstTheme("/theme");
+        MakeInterface(res);
         
         ShowForm();
     }
     
-    private void MakeInterface(){
+    private void MakeInterface( Resources res){
       	 /*String accountSID = "ACeff1a322ac15e1b89c8851cdab1e2766";
 String authToken = "9b8c6660c2962fa3dfa62fee7884f5b7";
 String fromPhone = "+18577632054";
@@ -59,7 +56,11 @@ String fromPhone = "+18577632054";
             new HostList() ; 
             
         });
-        
+           Image img2 = res.getImage("qr.png");
+       img2 =  img2.scaled(1000,80 );
+        ImageViewer image2= new ImageViewer(img2);
+
+     Button imgg2    = new Button(image2.getImage());
         
          Button saveButton = new Button("Sauvegarder le QRCODE");
       
@@ -67,7 +68,7 @@ Image img = QRMaker.QRCode(String.valueOf(CurrentHost.getOwner()+Utilisateur.cur
 ImageViewer image= new ImageViewer(img);
 
 Dialog.show("Success", "Vous avez participer avec succés à la mission nommee :   "+CurrentHost.getOwner()+" ! ", "OK", null);
-Dialog d = new Dialog("QR Code");
+Dialog d = new Dialog("");
  Image placeholder = Image.createImage(45, 45);
 		
 
@@ -79,8 +80,8 @@ Dialog d = new Dialog("QR Code");
           saveImage(img); 
         });
           
-          
-          
+        
+     d.add(CreateContainer_Y(imgg2));      
           
 d.add(GridLayout.encloseIn(2, imgg,btnMoveCamera));
 d.add(GridLayout.encloseIn(1, saveButton));

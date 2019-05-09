@@ -5,6 +5,7 @@
  */
 package gui.recyclage;
 
+import com.codename1.components.ImageViewer;
 import entities.Host;
 import services.HostService;
 import com.codename1.ui.Button;
@@ -27,8 +28,8 @@ public class HostList extends BaseGui {
              
        Image img = res.getImage("logoeco.png");
 
-     
-        DisplayAllHosts();
+
+        DisplayAllHosts(res);
  		 
           
         MakeAddHostButton();
@@ -37,10 +38,16 @@ public class HostList extends BaseGui {
         ShowForm();
     }
     
-    private void DisplayAllHosts(){
+    private void DisplayAllHosts( Resources res){
         
         
-        
+                 Image img2 = res.getImage("liste.png");
+       img2 =  img2.scaled(1000,150 );
+        ImageViewer image= new ImageViewer(img2);
+
+     Button imgg = new Button(image.getImage());
+     
+     
         for (Host CurrentHost : HostService.GetAllHosts()){
             
             //HostData to labels
@@ -54,7 +61,8 @@ public class HostList extends BaseGui {
                 System.out.println("<HostList::DisplayAllHosts> Displaying host : "+ CurrentHost.getOwner());
                 new HostDetails(CurrentHost);
             });
-            Container ContainerTemp= CreateContainer_Y(Name_Label, Places_Label, Location_Label, border);
+            Container ContainerTemp= CreateContainer_Y( Name_Label, Places_Label, Location_Label, border);
+            
             AddBlocks2x2(ContainerTemp);
         }
     }

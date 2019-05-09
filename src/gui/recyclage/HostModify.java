@@ -5,13 +5,17 @@
  */
 package gui.recyclage;
 
+import com.codename1.components.ImageViewer;
 import entities.Host;
 import services.HostService;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.spinner.Picker;
+import com.codename1.ui.util.Resources;
 
 /**
  *
@@ -25,14 +29,21 @@ public class HostModify extends BaseGui{
         super();
         
         CurrentHost = HostToOpen;
-        
-        MakeInterface();
+         Resources res ; 
+           res = UIManager.initFirstTheme("/theme");   
+        MakeInterface(res);
         
         ShowForm();
     }
     
-    private void MakeInterface(){
+    private void MakeInterface(Resources res){
          //TextFields
+          Image img = res.getImage("modification.png");
+       img =  img.scaled(1000,120 );
+        ImageViewer image= new ImageViewer(img);
+
+     Button imgg = new Button(image.getImage());
+
         TextField Name_TF = new TextField();
         TextField Places_TF = new TextField();
         TextField Location_TF = new TextField();
@@ -67,7 +78,7 @@ public class HostModify extends BaseGui{
             HostService.DeleteHost(CurrentHost.getID());
         });
         
-        MainForm.add(CreateContainer_Y(TITRE,Name_Label, Name_Field, Date_Label, CreateContainer_X(DateStart_Picker, DateEnd_Picker), Location_Label, Location_Field, Places_Label,Places_TF,Participant_Label,Participants_TF,  Validate_Button));
+        MainForm.add(CreateContainer_Y(imgg,Name_Label, Name_Field, Date_Label, CreateContainer_X(DateStart_Picker, DateEnd_Picker), Location_Label, Location_Field, Places_Label,Places_TF,Participant_Label,Participants_TF,  Validate_Button));
         
         
     }

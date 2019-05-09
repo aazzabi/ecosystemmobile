@@ -11,6 +11,7 @@ import gui.recyclage.HostList;
 import Utils.Utility;
 import com.codename1.l10n.DateFormat;
 import com.codename1.l10n.SimpleDateFormat;
+import entities.HostRating;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +45,27 @@ public class HostService {
         
         return HostList;
     }
+      public static List<HostRating> GetAllRatingHosts(){
+        
+        List<HostRating> HostList = new ArrayList<>();
+        
+        Utility.MakeConnection("http://127.0.0.1:8000/host/mobile/afficheAllHostRating", () -> {
+            
+            //Initialize Lists
+            List<Map<String, Object>> PreHostList =  Utility.MakeListFromJSON();
+            
+            //Parse the List and Map
+            for (Map<String, Object> PreHost: PreHostList){
+                
+                //Add to the List
+                HostList.add(MapToRating(PreHost));
+            
+            }
+        });
+        
+        return HostList;
+    }
+      
     public static Host GetHost(int ID){
         
         Utility.MakeConnection("http://127.0.0.1:8000/host/mobile/DisplayHost/"+ String.valueOf(ID), () -> {
@@ -117,4 +139,23 @@ public class HostService {
         
         return CurrentHost;
     }
+    
+    
+    public static HostRating MapToRating(Map<String, Object> PreHost){
+        
+        //Host Instance
+        HostRating CurrentHost = new HostRating();
+                
+        //ID
+        float TempID  = Float.parseFloat(PreHost.get("id").toString());
+        CurrentHost.setID((int) TempID);
+
+       
+        CurrentHost.setHostID((int)Float.parseFloat(PreHost.get("hostid").toString())); 
+        CurrentHost.setComment(PreHost.get("comment").toString());
+ 
+       
+        return CurrentHost;
+    }
+
 }

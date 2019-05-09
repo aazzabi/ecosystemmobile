@@ -5,12 +5,17 @@
  */
 package gui.recyclage;
 
+import com.codename1.components.ImageViewer;
 import entities.Host;
 import services.HostService;
 import com.codename1.ui.Button;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.spinner.Picker;
+import com.codename1.ui.util.Resources;
+import entities.Utilisateur;
 
 /**
  *
@@ -21,14 +26,20 @@ public class HostAdd extends BaseGui{
     
     public HostAdd() {
         super();
-        
-        DisplayAddForm();
+          Resources res ; 
+           res = UIManager.initFirstTheme("/theme");   
+        DisplayAddForm(res);
         
         ShowForm();
     }
     
-    private void DisplayAddForm(){
-        
+    private void DisplayAddForm(Resources res ){
+           Image img = res.getImage("creation.png");
+       img =  img.scaled(800,150 );
+        ImageViewer image= new ImageViewer(img);
+
+     Button imgg = new Button(image.getImage());
+
         //TextFields
         TextField Name_TF = new TextField();
         TextField Places_TF = new TextField();
@@ -63,12 +74,14 @@ public class HostAdd extends BaseGui{
             
             CurrentHost.setDateStart(DateStart_Picker.getDate());
             CurrentHost.setDateEnd(DateEnd_Picker.getDate());
-            
+           CurrentHost.setOwnerID(Utilisateur.current_user.getId()); 
+                       System.out.println(DateStart_Picker.getDate());
+
             System.out.println(DateStart_Picker.getDate());
             HostService.AddHost(CurrentHost);
         });
         
-        AddBlocks_Custom(10,1, TITRE, Name_Label, Name_TF, Places_Label, Places_TF, Location_Label, Location_TF,Participant_Label,Participants_TF, DateStart_Label, DateStart_Picker, DateEnd_Label, DateEnd_Picker, Validate_Button);
+        AddBlocks_Custom(10,1,imgg, Name_Label, Name_TF, Places_Label, Places_TF, Location_Label, Location_TF,Participant_Label,Participants_TF, DateStart_Label, DateStart_Picker, DateEnd_Label, DateEnd_Picker, Validate_Button);
         
     }
 }

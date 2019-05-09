@@ -17,6 +17,7 @@ import entities.Host;
 import com.codename1.components.ImageViewer;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
@@ -45,19 +46,24 @@ public class HostMapView extends BaseGui{
         im.setImage(URLImage.createToStorage(encImage, "High" + h.getImage(), h.getImage(), URLImage.RESIZE_SCALE_TO_FILL));
 
         cncn.add(im);*/
-       
-        Label InfoStade = new Label("Details : ");
+        Image img = res.getImage("details.png");
+       img =  img.scaled(1000,150 );
+        ImageViewer image= new ImageViewer(img);
+
+     Button imgg = new Button(image.getImage());
+        Label InfoMission= new Label("");
         Label nom = new Label("Name : "+h.getOwner());
         Label NbEtoiles = new Label("Nbr of mats : "+h.getTotalPlaces());
         Label capacity = new Label("City : "+h.getLocalisation());
         Label city = new Label("End Date : "+h.getDateEnd());
-        InfoStade.setUIID("SideCommand");
+        InfoMission.setUIID("SideCommand");
         Button Voir = new Button("Show Location");
         Voir.setUIID("Button");
        
         
         cncn.add(BoxLayout.encloseY(
-                 BorderLayout.center(InfoStade),nom,NbEtoiles,capacity,city,BorderLayout.center(Voir)
+                imgg,
+                 BorderLayout.center(InfoMission),nom,NbEtoiles,capacity,city,BorderLayout.center(Voir)
          ));
         
        cncn.setUIID(""); //InputContainerBackgroundSofien
