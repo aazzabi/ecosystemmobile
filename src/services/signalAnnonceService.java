@@ -83,7 +83,7 @@ public class signalAnnonceService {
 
     public ArrayList<signalAnnonce> getCountSignaAnnonces() {
         ConnectionRequest con = new ConnectionRequest();
-        con.setUrl("http://localhost/ecosystemweb/web/app_dev.php/annonceApi/");
+        con.setUrl("http://localhost/ecosystemweb/web/app_dev.php/annonceApi/signalAnnonce");
         con.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {

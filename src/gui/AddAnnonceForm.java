@@ -55,7 +55,7 @@ public class AddAnnonceForm extends BaseForm {
     ImageViewer vu1, vu2;
     private int idc;
     private String reg;
-    private String path,absolutePathPhotoAnnonce;
+    private String path, absolutePathPhotoAnnonce;
     ArrayList<Categorie_Annonce> listCat = new ArrayList<>();
     ArrayList<String> Region = new ArrayList<>();
 
@@ -69,10 +69,10 @@ public class AddAnnonceForm extends BaseForm {
         Toolbar tb = new Toolbar(true);
         setToolbar(tb);
         getTitleArea().setUIID("Container");
-         getToolbar().addCommandToRightBar("Retour", null, (evt) -> {
-             new AllAnoncesForm(res).show();
-             
-         });
+        getToolbar().addCommandToRightBar("Retour", null, (evt) -> {
+            new AllAnoncesForm(res).show();
+
+        });
         getContentPane().setScrollVisible(false);
         ButtonGroup bg = new ButtonGroup();
         int size = Display.getInstance().convertToPixels(1);
@@ -151,13 +151,13 @@ public class AddAnnonceForm extends BaseForm {
                             String filePath = (String) ev.getSource();
                             int fileNameIndex = filePath.lastIndexOf("/") + 1;
                             path = filePath.substring(fileNameIndex);
-                            
+
                             System.out.println(path);
                             Image imgg;
                             try {
                                 imgg = Image.createImage(filePath);
                                 if (imgg != null) {
-                                      
+
                                     file = new File(filePath);
                                     absolutePathPhotoAnnonce = filePath;
                                     System.err.println(file);
@@ -177,16 +177,22 @@ public class AddAnnonceForm extends BaseForm {
         });
         Cregion.addActionListener((evt) -> {
             reg = Cregion.getSelectedItem().toString();
-           // System.out.println(Cregion.getSelectedItem());
+            // System.out.println(Cregion.getSelectedItem());
         });
         btnajout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
+                if (tnom.getText().equals("") || tdesc.getText().equals("") || tprix.getText().equals("")) {
+                        
+                    
+                } else {
+                    Annonce a = new Annonce(tnom.getText(), tdesc.getText(), Double.parseDouble(tprix.getText()), reg, "Capture.PNG", idc, Utilisateur.current_user.getId());
+                    annonceS.ajouterAnnonce(a);
+                    new AllAnoncesForm(res).show();
+                }
                 //copyImages.deplacerVers(, absolutePathPhotoAnnonce, "C:\\ecosystemjava\\src\\res\\Annonce\\photo\\");
-               // copyImages.deplacerVers(path, absolutePathPhotoAnnonce, "C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
-                Annonce a = new Annonce(tnom.getText(), tdesc.getText(), Double.parseDouble(tprix.getText()), reg,"Capture.PNG", idc, Utilisateur.current_user.getId());
-                annonceS.ajouterAnnonce(a);
-                new AllAnoncesForm(res).show();
+                // copyImages.deplacerVers(path, absolutePathPhotoAnnonce, "C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
+
             }
         });
         add(cnt);
