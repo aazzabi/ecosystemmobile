@@ -122,7 +122,7 @@ public class AnnonceService {
 
     }
        
-       public ArrayList<Annonce> getAllAnnonces() {
+       public  ArrayList<Annonce> getAllAnnonces() {
         ConnectionRequest con = new ConnectionRequest();
         con.setUrl("http://localhost/ecosystemweb/web/app_dev.php/annonceApi/");
         con.addResponseListener(new ActionListener<NetworkEvent>() {

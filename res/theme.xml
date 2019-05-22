@@ -1,31 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <resource majorVersion="1" minorVersion="10" useXmlUI="false">
-    <image name="1.jpg"  />
     <image name="activation-background.jpg"  />
     <image name="ap-environnement-projet.jpg"  />
     <image name="avatar_author.png"  />
-    <image name="avatar_comm.jpg"  />
-    <image name="confirmation-background.jpg"  />
     <image name="default_profile_picture.png"  />
-    <image name="dog.jpg"  />
-    <image name="facebook-login.png"  />
     <image name="facebook-logo.png" type="multi"  />
     <image name="fondsofien.jpg" type="multi"  />
+    <image name="imageRep2.png"  />
     <image name="logoeco.png"  />
-    <image name="news-item-1.jpg"  />
-    <image name="news-item-2.jpg"  />
-    <image name="news-item-3.jpg"  />
-    <image name="news-item-4.jpg"  />
-    <image name="news-item.jpg"  />
     <image name="news-tab-down-arrow.png" type="multi"  />
     <image name="news-tab-down.png" type="multi"  />
     <image name="on-off-off.png" type="multi"  />
     <image name="on-off-on.png" type="multi"  />
-    <image name="profile-background.jpg"  />
+    <image name="partenariat.jpg"  />
     <image name="profile-pic.jpg" type="multi"  />
-    <image name="signin-background.jpg"  />
-    <image name="signup-background.jpg"  />
     <image name="smily.png" type="multi"  />
     <theme name="Theme">
         <val key="@includeNativeBool" value="true" />
@@ -45,8 +34,6 @@
         <val key="BottomPad.padding" value="0.0,0.0,0.0,0.0" />
         <val key="BottomPad.transparency" value="0" />
         <val key="Button.align" value="4" />
-        <val key="Button.bgImage" value="1.jpg" />
-        <val key="Button.bgType" value="1" />
         <border key="Button.border" type="round" roundBorderColor="16723285" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="Button.fgColor" value="ffffff" />
         <font key="Button.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.5" />
@@ -122,7 +109,7 @@
         <val key="InputAvatarImage.padding" value="2.0,2.0,2.0,2.0" />
         <val key="InputAvatarImage.transparency" value="255" />
         <val key="InputContainerBackground.bgColor" value="9e9e9e" />
-        <val key="InputContainerBackground.bgImage" value="signup-background.jpg" />
+        <val key="InputContainerBackground.bgImage" value="logoeco.png" />
         <val key="InputContainerBackground.bgType" value="1" />
         <val key="InputContainerBackground.margin" value="0.0,0.0,0.0,0.0" />
         <val key="InputContainerBackground.transparency" value="255" />
@@ -205,6 +192,14 @@
         <val key="PictureWhiteBackgrond.padUnit" value="2,2,2,2" />
         <val key="PictureWhiteBackgrond.padding" value="1.0,1.0,1.0,1.0" />
         <val key="PictureWhiteBackgrond.transparency" value="255" />
+        <val key="Rep_Titre.align" value="4" />
+        <val key="Rep_Titre.fgColor" value="660099" />
+        <font key="Rep_Titre.font" type="ttf" face="32" style="1" size="0" name="native:ItalicLight" family="native:ItalicLight" sizeSettings="4" actualSize="50.0" />
+        <val key="Rep_Titre.textDecoration" value="16" />
+        <val key="Rep_Titre.transparency" value="10" />
+        <val key="Rep_champ.fgColor" value="0" />
+        <font key="Rep_champ.font" type="system" face="32" style="0" size="16" />
+        <val key="Rep_champ.transparency" value="50" />
         <val key="SelectBar.align" value="4" />
         <val key="SelectBar.bgColor" value="ff2d55" />
         <val key="SelectBar.bgImage" value="news-tab-down.png" />
@@ -269,7 +264,7 @@
         <val key="SignIn.padUnit" value="0,0,2,0" />
         <val key="SignIn.padding" value="0.0,3.0,0.0,0.0" />
         <val key="SignIn.transparency" value="255" />
-        <val key="SignUp.bgImage" value="signup-background.jpg" />
+        <val key="SignUp.bgImage" value="ap-environnement-projet.jpg" />
         <val key="SignUp.bgType" value="33" />
         <val key="SignUp.margin" value="0.0,0.0,0.0,0.0" />
         <val key="SignUp.padUnit" value="0,0,2,0" />
@@ -372,6 +367,9 @@
         <val key="WhiteSeparator.transparency" value="26" />
         <font key="commentaires.font" type="ttf" face="0" style="2" size="0" name="native:ItalicLight" family="native:ItalicLight" sizeSettings="4" actualSize="19.0" />
         <font key="ktiba_kbira.font" type="system" face="32" style="1" size="16" />
+        <val key="statut.align" value="4" />
+        <val key="statut.fgColor" value="ff3333" />
+        <font key="statut.font" type="system" face="0" style="0" size="0" />
         <val key="transparency" value="0" />
     </theme>
     <image name="timeline-background.jpg"  />

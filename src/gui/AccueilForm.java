@@ -73,6 +73,7 @@ public class AccueilForm extends BaseForm {
         getTitleArea().setUIID("Container");
         getContentPane().setScrollVisible(false);
         ButtonGroup bg = new ButtonGroup();
+        
         int size = Display.getInstance().convertToPixels(1);
         Image unselectedWalkthru = Image.createImage(size, size, 0);
         Graphics g = unselectedWalkthru.getGraphics();
