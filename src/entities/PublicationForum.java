@@ -6,8 +6,7 @@
 package entities;
 
 import java.util.ArrayList;
-import java.util.Date;
-//import java.time.LocalDate;
+import java.util.Calendar;
 
 /**
  *
@@ -21,15 +20,13 @@ public class PublicationForum {
     private String categorie;
     private int createdBy;
     private String createdByName;
-    private Date createdAt;
+    private Calendar createdAt;
     private int nbrVues;
     private int nbrCommentaires;
     private ArrayList<CommentairePublication> commentaires;
-
     public PublicationForum() {  
         this.etat = "publié";
         this.createdBy = Session.getCurrentSession();
-       // this.createdAt = Date.valueOf(LocalDate.now());
         this.nbrVues = 0;
         this.commentaires = new ArrayList();
     }
@@ -82,11 +79,11 @@ public class PublicationForum {
         this.createdBy = createdBy;
     }
 
-    public Date getCreatedAt() {
+    public Calendar getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Calendar createdAt) {
         this.createdAt = createdAt;
     }
 

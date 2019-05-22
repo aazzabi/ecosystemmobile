@@ -6,6 +6,7 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import java.util.List;
  * @author anasc
  */
 public class Utilisateur {
+    
+    public static Utilisateur current_user = null;
     
     private int id;
     
@@ -38,7 +41,7 @@ public class Utilisateur {
  
     private String confirmationToken;
 
-    private Date passwordRequestedAt;
+    private Calendar passwordRequestedAt;
    
     private String roles;
    
@@ -50,7 +53,7 @@ public class Utilisateur {
     
     private String photo ;
     
-    private Date photo_updated_at;
+    private Calendar photo_updated_at;
     
     private String rue;
     
@@ -177,11 +180,11 @@ public class Utilisateur {
         this.confirmationToken = confirmationToken;
     }
 
-    public Date getPasswordRequestedAt() {
+    public Calendar getPasswordRequestedAt() {
         return passwordRequestedAt;
     }
 
-    public void setPasswordRequestedAt(Date passwordRequestedAt) {
+    public void setPasswordRequestedAt(Calendar passwordRequestedAt) {
         this.passwordRequestedAt = passwordRequestedAt;
     }
 
@@ -225,11 +228,11 @@ public class Utilisateur {
         this.photo = photo;
     }
 
-    public Date getPhoto_updated_at() {
+    public Calendar getPhoto_updated_at() {
         return photo_updated_at;
     }
 
-    public void setPhoto_updated_at(Date photo_updated_at) {
+    public void setPhoto_updated_at(Calendar photo_updated_at) {
         this.photo_updated_at = photo_updated_at;
     }
 

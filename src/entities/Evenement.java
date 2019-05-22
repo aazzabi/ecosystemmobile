@@ -7,6 +7,7 @@ package entities;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 //import java.sql.Date;
@@ -20,7 +21,7 @@ public class Evenement {
     private int id_categorie;
     private Utilisateur createdBy;
     private String lieu;
-    private Date date;
+    private Date date; //5damt b date fel champ date walla calendar ? le date aadeya fhemtech mnin jet calendar, firas mara badalaha l kol xd hhhhhhh tkt 7kina fiha , 
     private Categorie_Evts categorie;
     private String titre;
     private String description;
@@ -63,9 +64,7 @@ public class Evenement {
     private List<Utilisateur>participants=new ArrayList();
     
     public Evenement() {
-    }
-    
-    
+    }  
 
     public Evenement(int id, Utilisateur createdBy, String lieu, Date date, Categorie_Evts categorie, String titre, String description) {
         this.id = id;
@@ -78,8 +77,6 @@ public class Evenement {
     }
     
      public Evenement( String lieu, int id_categorie,Date date, String titre, String description) {
-      
-        
         this.lieu = lieu;
         this.id_categorie = id_categorie;
         this.titre = titre;
@@ -87,8 +84,6 @@ public class Evenement {
         this.date=date;
     }
       public Evenement( String lieu, int id_categorie, String titre, String description,Date date) {
-      
-        
         this.lieu = lieu;
         this.id_categorie = id_categorie;
         this.titre = titre;
