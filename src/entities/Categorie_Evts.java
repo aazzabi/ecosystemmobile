@@ -71,9 +71,9 @@ public class Categorie_Evts  {
 
     @Override
     public String toString() {
-        return ""+getLibelle()+"";
+        return "Categorie_Evts{" + "id=" + id + ", libelle=" + libelle + ", but=" + but + '}';
     }
-    
+
     
 
     
