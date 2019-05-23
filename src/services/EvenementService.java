@@ -37,24 +37,8 @@ public class EvenementService {
         try {
             JSONParser j = new JSONParser();// Instanciation d'un objet JSONParser permettant le parsing du résultat json
 
-            /*
-                On doit convertir notre réponse texte en CharArray à fin de
-            permettre au JSONParser de la lire et la manipuler d'ou vient 
-            l'utilité de new CharArrayReader(json.toCharArray())
-            
-            La méthode parse json retourne une MAP<String,Object> ou String est 
-            la clé principale de notre résultat.
-            Dans notre cas la clé principale n'est pas définie cela ne veux pas
-            dire qu'elle est manquante mais plutôt gardée à la valeur par defaut
-            qui est root.
-            En fait c'est la clé de l'objet qui englobe la totalité des objets 
-                    c'est la clé définissant le tableau de tâches.
-             */
             Map<String, Object> event = j.parseJSON(new CharArrayReader(json.toCharArray()));
 
-            /* Ici on récupère l'objet contenant notre liste dans une liste 
-            d'objets json List<MAP<String,Object>> ou chaque Map est une tâche                
-             */
             List<Map<String, Object>> events = (List<Map<String, Object>>) event.get("root");
 
             //Parcourir la liste des tâches Json

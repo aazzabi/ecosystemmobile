@@ -60,6 +60,7 @@ public class MyApplication {
             return;
         }
         Database db;
+        
 
         try {
             db = Database.openOrCreate("EcoSystem.db");
@@ -91,7 +92,7 @@ public class MyApplication {
             
         }
 
->>>>>>> 099949910c80c1f512940ce247f049eb1c94fcab
+
     }
 
     public void stop() {

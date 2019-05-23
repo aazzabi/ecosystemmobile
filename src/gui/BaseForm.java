@@ -85,6 +85,7 @@ public class BaseForm extends Form {
         tb.addMaterialCommandToSideMenu("A", FontImage.MATERIAL_UPDATE, e -> new AccueilForm(res).show());
         tb.addMaterialCommandToSideMenu("B", FontImage.MATERIAL_PARTY_MODE, e -> new AccueilForm(res).show());
         tb.addMaterialCommandToSideMenu("Annonce", FontImage.MATERIAL_ADD_A_PHOTO, e -> new AllAnonces(res).show());
+        tb.addMaterialCommandToSideMenu("Events", FontImage.MATERIAL_ADD_A_PHOTO, e -> new AffichageCatEvts(res).show());
         tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> {
             try {
                 Database db = Database.openOrCreate("EcoSystem.db");

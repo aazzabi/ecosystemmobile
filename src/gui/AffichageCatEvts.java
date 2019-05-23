@@ -8,13 +8,25 @@ package gui;
 import com.codename1.components.ImageViewer;
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.Button;
+import com.codename1.ui.ButtonGroup;
+import com.codename1.ui.Component;
+import static com.codename1.ui.Component.LEFT;
 import com.codename1.ui.Container;
+import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.Form;
+import com.codename1.ui.Graphics;
 import com.codename1.ui.Image;
+import com.codename1.ui.InfiniteContainer;
 import com.codename1.ui.Label;
+import com.codename1.ui.RadioButton;
+import com.codename1.ui.Toolbar;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.layouts.GridLayout;
+import com.codename1.ui.layouts.LayeredLayout;
+import com.codename1.ui.util.Resources;
 import entities.Categorie_Evts;
 import entities.Evenement;
 import static gui.AffichageEvents.f;
@@ -27,26 +39,48 @@ import services.EvenementService;
  *
  * @author Rania
  */
-public class AffichageCatEvts extends Form{
-    static  Form f;
+public class AffichageCatEvts extends BaseForm{
+     static  Form f;
    // SpanLabel lb;
      Label libelle ; 
     Label but ;
     static Categorie_Evts cat ;
-
-    public AffichageCatEvts() {
+    Resources res;
+     ArrayList<Categorie_Evts> a = new ArrayList<>();
+     Container categories;
+    public AffichageCatEvts(Resources res) {
         
-         f = new Form("Choisissez une catégorie d'event");
-    
-         Container categories = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-     
+        // f = new Form("Choisissez une catégorie d'event");
+    super("Choisissez une catégorie d'event", BoxLayout.y());
+       this.res = res;
+       Toolbar tb = new Toolbar(true);
+       setToolbar(tb);
+       getTitleArea().setUIID("Container");
+       getContentPane().setScrollVisible(false);
+      this.header("Categories d'events");
         CategorieEvtsService service=new CategorieEvtsService();
-       // lb.setText(e.getList2().toString());
-       ArrayList<Categorie_Evts> a = service.getList();
-   
+        categories = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+       
+       
+   Container ic = new InfiniteContainer() {
+            @Override
+            public Component[] fetchComponents(int index, int amount) {
+                if (index == 0) {
+                    a = service.getList();;
+                    amount= a.size();
+                }
+                if (index + amount > a.size()) {
+                    amount = a.size() - index;
+                }
+                if (amount <= 0) {
+                    return null;
+                }
+                Component[] elments = new Component[amount];
+                int i = 0;
+
         for (Categorie_Evts c : a )  
        {
-            Container catContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
+            Container element = new Container(new BoxLayout(BoxLayout.Y_AXIS));
             Container detailsContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
           
            libelle= new Label();
@@ -59,7 +93,7 @@ public class AffichageCatEvts extends Form{
           // detailsContainer.add(but);
         
            
-           catContainer.add(detailsContainer);
+           element.add(detailsContainer);
            
            Button events = new Button(); 
            events.addActionListener((e)->
@@ -69,13 +103,70 @@ public class AffichageCatEvts extends Form{
            new AffichageEvents();
            
            });
-           catContainer.setLeadComponent(events);
-           categories.add(catContainer);
+           element.setLeadComponent(events);
+            elments[i] = element;
+                        i++;
+           
+          
        }
-       
-        f.add(categories);
-        f.show();
+          return elments;
+            }
+   };  ic.setScrollableY(false);
+   categories.add(ic);
+        super.add(categories);  
+        
+//        f.add(categories);
+       // f.show();
     }
+    
+      private void updateArrowPosition(Button b, Label arrow) {
+        arrow.getUnselectedStyle().setMargin(LEFT, b.getX() + b.getWidth() / 2 - arrow.getWidth() / 2);
+        arrow.getParent().repaint();
+
+    }
+    private void bindButtonSelection(Button b, Label arrow) {
+        b.addActionListener(e -> {
+            if (b.isSelected()) {
+                updateArrowPosition(b, arrow);
+            }
+        });
+    }
+    public void header(String titre){
+        ButtonGroup bg = new ButtonGroup();
+        int size = Display.getInstance().convertToPixels(1);
+        Image unselectedWalkthru = Image.createImage(size, size, 0);
+        Graphics g = unselectedWalkthru.getGraphics();
+        g.setColor(0xffffff);
+        g.setAlpha(100);
+        g.setAntiAliased(true);
+        g.fillArc(0, 0, size, size, 0, 360);
+        Image selectedWalkthru = Image.createImage(size, size, 0);
+        g = selectedWalkthru.getGraphics();
+        g.setColor(0xffffff);
+        g.setAntiAliased(true);
+        g.fillArc(0, 0, size, size, 0, 360);
+        super.addSideMenu(res);
+
+        ButtonGroup barGroup = new ButtonGroup();
+        RadioButton all = RadioButton.createToggle(titre, barGroup);
+        all.setUIID("SelectBar");
+        
+        Label arrow = new Label(res.getImage("news-tab-down-arrow.png"), "Container");
+
+        add(LayeredLayout.encloseIn(
+                GridLayout.encloseIn(1, all),
+                FlowLayout.encloseBottom(arrow)
+        ));
+
+        all.setSelected(true);
+        arrow.setVisible(false);
+        addShowListener(e -> {
+            arrow.setVisible(false);
+            updateArrowPosition(all, arrow);
+        });
+        bindButtonSelection(all, arrow);
+    }
+    
     
     
     

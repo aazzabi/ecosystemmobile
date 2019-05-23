@@ -28,6 +28,8 @@ import com.mycompany.myapp.MyApplication;
 import static gui.AffichageEvents.f;
 import entities.Evenement;
 import entities.ParticiperEvent;
+import entities.Session;
+import entities.Utilisateur;
 import static gui.AffichageEvents.f;
 import services.EvenementService;
 import services.UserService;
@@ -36,7 +38,7 @@ import services.UserService;
  *
  * @author Rania
  */
-public class DetailsEvent extends Form {
+public class DetailsEvent extends BaseForm {
     
     Label titre ; 
     Label date ;
@@ -78,7 +80,7 @@ public class DetailsEvent extends Form {
         noparticiper.setVisible(false);
         
         EvenementService es=new EvenementService();
-        ParticiperEvent join=new ParticiperEvent(MyApplication.user.getId(),AffichageEvents.event.getId()); 
+        ParticiperEvent join=new ParticiperEvent(Utilisateur.current_user.getId(),AffichageEvents.event.getId()); 
         
         if(es.verifParticiper(join)==false)
             
@@ -110,7 +112,7 @@ public class DetailsEvent extends Form {
         ShareButton sb=new ShareButton();
         sb.setText("Invitez vos amis");
         sb.setTextToShare("Bonjour, je t’invite à\n" +
-"télécharger et à installer l’application nommée XXX. C’est un truc de ouf pour");
+"télécharger et à installer l’application Ecosystem. C’est un truc de ouf pour l'écologie");
         //**********************
         
         
@@ -121,9 +123,9 @@ public class DetailsEvent extends Form {
         URLImage urlImage = URLImage.createToStorage(placeholder, AffichageEvents.event.getCover(), "http://localhost/ecosystemweb/web/uploads/evt/cover/"+AffichageEvents.event.getCover());
         img.setOpaque(false);
         img.setImage(urlImage);
-        f.getToolbar().addCommandToLeftBar("Retour", null, e ->{
+/*        f.getToolbar().addCommandToLeftBar("Retour", null, e ->{
             new AffichageEvents();
-            AffichageEvents.f.showBack() ;});
+            AffichageEvents.f.showBack() ;});*/
        
         
         
@@ -136,7 +138,7 @@ public class DetailsEvent extends Form {
             
             participer.addActionListener(e->{ 
                 
-                (new EvenementService()).Participer(new ParticiperEvent(MyApplication.user.getId(),AffichageEvents.event.getId()));
+                (new EvenementService()).Participer(new ParticiperEvent(Utilisateur.current_user.getId(),AffichageEvents.event.getId()));
                 participer.setVisible(false);
                 participerimg.setVisible(false);
                 noparticiper.setVisible(true);
@@ -154,7 +156,7 @@ public class DetailsEvent extends Form {
             
             noparticiper.addActionListener(e->{
                 
-                (new EvenementService()).NoParticiper(new ParticiperEvent(MyApplication.user.getId(),AffichageEvents.event.getId()));
+                (new EvenementService()).NoParticiper(new ParticiperEvent(Utilisateur.current_user.getId(),AffichageEvents.event.getId()));
                 noparticiper.setVisible(false);
                 noparticiperimg.setVisible(false);
                 participer.setVisible(true);

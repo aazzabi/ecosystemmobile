@@ -30,7 +30,7 @@ import services.EvenementService;
  *
  * @author Rania
  */
-public class AffichageEvents extends Form{
+public class AffichageEvents extends BaseForm{
     
    static  Form f;
    // SpanLabel lb;
@@ -42,7 +42,7 @@ public class AffichageEvents extends Form{
     Label lieu;
     Label description;
     Label nbVues;
-    
+    Resources res;
    
   
     public AffichageEvents() {
@@ -76,9 +76,9 @@ public class AffichageEvents extends Form{
            date.setText("Cree le " + sm.format(ev.getDate()));
            nbVues.setText(ev.getNbVues()+"");
            nbVues.setIcon(FontImage.createMaterial(FontImage.MATERIAL_REMOVE_RED_EYE, nbVues.getUnselectedStyle()));
-            f.getToolbar().addCommandToLeftBar("Retour", null, e ->{
-            new AffichageCatEvts();
-            AffichageCatEvts.f.showBack() ;});
+           /* f.getToolbar().addCommandToLeftBar("Retour", null, e ->{
+            new AffichageCatEvts(res);
+            AffichageCatEvts.f.showBack() ;});*/
            
            
             
