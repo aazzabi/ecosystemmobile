@@ -71,8 +71,10 @@ public class SignInForm extends BaseForm {
 		signIn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
+                            System.out.println("cococococo :"+password.getText());
 				if (username.getText() != "" || password.getText() != "") {
 					ServiceUser ser = new ServiceUser();
+                                    System.out.println("cococococo :"+password.getText());
                                     
 					Utilisateur u = ser.CheckLoginData(username.getText(), password.getText());
 					if (u == null) {

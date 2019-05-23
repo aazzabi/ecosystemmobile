@@ -270,7 +270,8 @@ public class Utilisateur {
 
     @Override
     public String toString() {
-        return ""+ username + "";
+        return "Utilisateur{" + "id=" + id + ", group_id=" + group_id + ", username=" + username + ", usernameCanonical=" + usernameCanonical + ", email=" + email + ", emailCanonical=" + emailCanonical + ", enabled=" + enabled + ", salt=" + salt + ", password=" + password + ", lastLogin=" + lastLogin + ", confirmationToken=" + confirmationToken + ", passwordRequestedAt=" + passwordRequestedAt + ", roles=" + roles + ", nom=" + nom + ", prenom=" + prenom + ", discr=" + discr + ", photo=" + photo + ", photo_updated_at=" + photo_updated_at + ", rue=" + rue + ", ville=" + ville + ", numtel=" + numtel + ", nomPropriete=" + nomPropriete + ", eventsParticipes=" + eventsParticipes + '}';
     }
+
 
 }

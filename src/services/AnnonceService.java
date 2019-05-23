@@ -26,6 +26,7 @@ import java.util.Map;
 public class AnnonceService {
     ArrayList<Annonce> listAnnonce = new ArrayList<>();
     ArrayList<Categorie_Annonce> listCat = new ArrayList<>();
+    
      public void ajouterAnnonce(Annonce a) {
         ConnectionRequest con = new ConnectionRequest();
         String Url = "http://localhost/ecosystemweb/web/app_dev.php/annonceApi/new?titre="+ a.getTitre()+"&description="+a.getDescription()+"&prix="+ a.getPrix().toString() + "&photo=" + a.getPhoto() + "&categorie=" + a.getCategorie_id() + "&user=" + a.getUser_id() + "&region=" + a.getRegion();
@@ -178,4 +179,31 @@ public class AnnonceService {
         NetworkManager.getInstance().addToQueueAndWait(con);
         return listAnnonce;
     }
+        public ArrayList<String> getRegion()
+        {
+            ArrayList<String> reg = new ArrayList<>();
+            reg.add("Tunis");
+            reg.add("Ariana");
+            reg.add("Manouba");
+            reg.add("Ben Arous");
+            reg.add("Bizerte");
+            reg.add("Béja");
+            reg.add("Jendouba");
+            reg.add("Siliana");
+            reg.add("Kasserine");
+            reg.add("Sidi Bouzid");
+            reg.add("Gafsa");
+            reg.add("Tozeur");
+            reg.add("Kébili");
+            reg.add("Tataouine");
+            reg.add("Médenine");
+            reg.add("Gabès");
+            reg.add("Sfax");
+            reg.add("Kairouan");
+            reg.add("Mahdia");
+            reg.add("Monastir");
+            reg.add("Zaghouan");
+            reg.add("Nabeul");
+            return  reg;
+        }
 }
