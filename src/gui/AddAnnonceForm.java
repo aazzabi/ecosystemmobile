@@ -36,7 +36,6 @@ import entities.Utilisateur;
 import java.io.IOException;
 import java.util.ArrayList;
 import services.AnnonceService;
-import utils.copyImages;
 
 /**
  *
@@ -182,16 +181,16 @@ public class AddAnnonceForm extends BaseForm {
         btnajout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if (tnom.getText().equals("") || tdesc.getText().equals("") || tprix.getText().equals("")) {
+//                if (tnom.getText().equals("") || tdesc.getText().equals("") || tprix.getText().equals("")) {
                         
                     
-                } else {
-                    Annonce a = new Annonce(tnom.getText(), tdesc.getText(), Double.parseDouble(tprix.getText()), reg, "Capture.PNG", idc, Utilisateur.current_user.getId());
-                    annonceS.ajouterAnnonce(a);
-                    new AllAnoncesForm(res).show();
-                }
+//                } else {
+//                    Annonce a = new Annonce(tnom.getText(), tdesc.getText(), Double.parseDouble(tprix.getText()), reg, "Capture.PNG", idc, Utilisateur.current_user.getId());
+//                    annonceS.ajouterAnnonce(a);
+//                    new AllAnoncesForm(res).show();
+//                }
                 //copyImages.deplacerVers(, absolutePathPhotoAnnonce, "C:\\ecosystemjava\\src\\res\\Annonce\\photo\\");
-                // copyImages.deplacerVers(path, absolutePathPhotoAnnonce, "C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
+                // copyImages.deplacerVers(path, absolutePathPhotoAnnonce, "C:\\wamp\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
 
             }
         });

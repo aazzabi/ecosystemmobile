@@ -92,7 +92,7 @@ public class ShowAnnonceForm extends BaseForm {
             updateArrowPosition(all, arrow);
         });
         bindButtonSelection(all, arrow);
-        Image img = Image.createImage("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(2000, 1500);
+        Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(2000, 1500);
         ImageViewer v = new ImageViewer(img);
         v.setWidth(2000);
         v.setHeight(1500);

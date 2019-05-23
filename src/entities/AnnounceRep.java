@@ -77,7 +77,7 @@ public class AnnounceRep {
     public void setUrlPhoto(String urlPhoto) {
         this.urlPhoto = urlPhoto;
 //        try {
-//            BufferedImage bf = ImageIO.read(new File("C:\\wamp64\\www\\ecosystemweb\\web\\uploads\\annoncerep\\photos\\" + urlPhoto));
+//            BufferedImage bf = ImageIO.read(new File("C:\\wamp\\www\\ecosystemweb\\web\\uploads\\annoncerep\\photos\\" + urlPhoto));
 //            BufferedImage bf1 = Scalr.resize(bf, Scalr.Method.SPEED, Scalr.Mode.FIT_TO_WIDTH,
 //                    250, 250, Scalr.OP_ANTIALIAS);
 //            image = SwingFXUtils.toFXImage(bf1, null);

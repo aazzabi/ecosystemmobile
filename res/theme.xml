@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <resource majorVersion="1" minorVersion="10" useXmlUI="false">
-    <image name="activation-background.jpg"  />
-    <image name="ap-environnement-projet.jpg"  />
-    <image name="avatar_author.png"  />
-    <image name="default_profile_picture.png"  />
-    <image name="facebook-logo.png" type="multi"  />
-    <image name="fondsofien.jpg" type="multi"  />
-    <image name="imageRep2.png"  />
-    <image name="logoeco.png"  />
     <image name="1.jpg"  />
     <image name="9.my_feed - Copy.png"  />
     <image name="9.my_feed.png"  />
@@ -48,6 +40,7 @@
     <image name="facebook-login.png"  />
     <image name="facebook-logo.png" type="multi"  />
     <image name="fondsofien.jpg" type="multi"  />
+    <image name="imageRep2.png"  />
     <image name="liste.png"  />
     <image name="logoeco.png"  />
     <image name="mainmenu.png"  />
@@ -96,9 +89,9 @@
         <val key="BottomPad.padding" value="0.0,0.0,0.0,0.0" />
         <val key="BottomPad.transparency" value="0" />
         <val key="Button.align" value="4" />
-        <border key="Button.border" type="round" roundBorderColor="16723285" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="Button.bgImage" value="design-application-mobile-CME - Copy (2).jpg" />
         <val key="Button.bgType" value="33" />
+        <border key="Button.border" type="round" roundBorderColor="16723285" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="Button.fgColor" value="ffffff" />
         <font key="Button.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.5" />
         <val key="Button.marUnit" value="2,2,2,2" />
@@ -132,8 +125,7 @@
         <val key="CenterLink.padUnit" value="2,2,2,2" />
         <val key="CenterLink.padding" value="2.0,2.0,1.0,1.0" />
         <val key="CenterLink.transparency" value="0" />
-        <val key="Container.bgImage" value="transparency.png" />
-        <val key="Container.bgType" value="34" />
+        <val key="Container.bgColor" value="f0f0f0" />
         <val key="DatePickerDay.align" value="4" />
         <val key="DatePickerDay.fgColor" value="ffffff" />
         <font key="DatePickerDay.font" type="ttf" face="0" style="0" size="0" name="native:MainThin" family="native:MainThin" sizeSettings="3" actualSize="4.5" />
@@ -454,20 +446,15 @@
         <val key="WhiteSeparator.margin" value="0.0,0.0,0.0,0.0" />
         <val key="WhiteSeparator.padding" value="1.0,1.0,1.0,1.0" />
         <val key="WhiteSeparator.transparency" value="26" />
-        <val key="bgColor" value="6600" />
-        <val key="bgImage" value="design-application-mobile-CME - Copy (3).jpg" />
-        <val key="bgType" value="1" />
         <font key="commentaires.font" type="ttf" face="0" style="2" size="0" name="native:ItalicLight" family="native:ItalicLight" sizeSettings="4" actualSize="19.0" />
-        <val key="fgColor" value="3300" />
         <font key="ktiba_kbira.font" type="system" face="32" style="1" size="16" />
-        <val key="statut.align" value="4" />
-        <val key="statut.fgColor" value="ff3333" />
-        <font key="statut.font" type="system" face="0" style="0" size="0" />
-        <val key="transparency" value="0" />
         <val key="sel#bgColor" value="99ff66" />
         <val key="sel#bgImage" value="ap-environnement-projet.jpg" />
         <val key="sel#bgType" value="1" />
         <val key="sel#fgColor" value="66ff66" />
+        <val key="statut.align" value="4" />
+        <val key="statut.fgColor" value="ff3333" />
+        <font key="statut.font" type="system" face="0" style="0" size="0" />
         <val key="transparency" value="50" />
     </theme>
     <image name="timeline-background.jpg"  />

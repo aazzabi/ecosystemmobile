@@ -291,8 +291,8 @@ public class ReparationForm extends BaseForm {
                                 Container element = new Container(BoxLayout.y());
                                 Container ls = new Container(BoxLayout.x());
                                 try {
-                                    System.out.println("file:/C:/wamp64/www/ecosystemweb/web/uploads/annoncerep/photos/" + a.getUrlPhoto());
-                                    Image img = Image.createImage("file:/C:/wamp64/www/ecosystemweb/web/uploads/annoncerep/photos/" + a.getUrlPhoto()).fill(500, 500);
+                                    System.out.println("file:/C:/wamp/www/ecosystemweb/web/uploads/annoncerep/photos/" + a.getUrlPhoto());
+                                    Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/annoncerep/photos/" + a.getUrlPhoto()).fill(500, 500);
 
                                     //lS containter for photo / nomRep
                                     //LS1 container for other information
@@ -451,8 +451,8 @@ public class ReparationForm extends BaseForm {
                                 Container element = new Container(BoxLayout.y());
                                 Container ls = new Container(BoxLayout.x());
                                 try {
-                                    System.out.println("file:/C:/wamp64/www/ecosystemweb/web/uploads/user/photo/" + a.getPhoto());
-                                    Image img = Image.createImage("file:/C:/wamp64/www/ecosystemweb/web/uploads/user/photo/" + a.getPhoto()).fill(500, 500);
+                                    System.out.println("file:/C:/wamp/www/ecosystemweb/web/uploads/user/photo/" + a.getPhoto());
+                                    Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/user/photo/" + a.getPhoto()).fill(500, 500);
 
                                     //lS containter for photo / nomRep
                                     //LS1 container for other information

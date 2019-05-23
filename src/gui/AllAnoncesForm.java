@@ -152,7 +152,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                     Container element = new Container(BoxLayout.y());
                     Container ls = new Container(BoxLayout.x());
                     try {
-                        Image img = Image.createImage("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
+                        Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
 
                         ImageViewer v = new ImageViewer(img);
                         Container ls1 = new Container(BoxLayout.y());
@@ -317,7 +317,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                             Container element = new Container(BoxLayout.y());
                             Container ls = new Container(BoxLayout.x());
                             try {
-                                Image img = Image.createImage("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
+                                Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
 
                                 ImageViewer v = new ImageViewer(img);
                                 Container ls1 = new Container(BoxLayout.y());
@@ -471,7 +471,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                                 Container element = new Container(BoxLayout.y());
                                 Container ls = new Container(BoxLayout.x());
                                 try {
-                                    Image img = Image.createImage("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
+                                    Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
 
                                     ImageViewer v = new ImageViewer(img);
                                     Container ls1 = new Container(BoxLayout.y());
@@ -616,7 +616,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                                 Container element = new Container(BoxLayout.y());
                                 Container ls = new Container(BoxLayout.x());
                                 try {
-                                    Image img = Image.createImage("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
+                                    Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
 
                                     ImageViewer v = new ImageViewer(img);
                                     Container ls1 = new Container(BoxLayout.y());
@@ -761,7 +761,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                                 Container element = new Container(BoxLayout.y());
                                 Container ls = new Container(BoxLayout.x());
                                 try {
-                                    Image img = Image.createImage("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
+                                    Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
 
                                     ImageViewer v = new ImageViewer(img);
                                     Container ls1 = new Container(BoxLayout.y());
@@ -915,7 +915,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                             Container element = new Container(BoxLayout.y());
                             Container ls = new Container(BoxLayout.x());
                             try {
-                                Image img = Image.createImage("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
+                                Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
 
                                 ImageViewer v = new ImageViewer(img);
                                 Container ls1 = new Container(BoxLayout.y());
@@ -1058,7 +1058,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                             Container element = new Container(BoxLayout.y());
                             Container ls = new Container(BoxLayout.x());
                             try {
-                                Image img = Image.createImage("file:/C:/wamp64/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
+                                Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
 
                                 ImageViewer v = new ImageViewer(img);
                                 Container ls1 = new Container(BoxLayout.y());
