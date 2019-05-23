@@ -69,16 +69,19 @@ public class Annonce {
         this.categorie_id = categorie_id;
         this.user_id = user_id;
     }
-  public Annonce(String titre, String description, Double prix, String region, String photo, int categorie_id, int user_id) {
+
+    
+
+    public Annonce(String titre, String description, Double prix, String region, String photo, int categorie_id) {
         this.titre = titre;
         this.description = description;
         this.prix = prix;
         this.region = region;
         this.photo = photo;
         this.categorie_id = categorie_id;
-        this.user_id = user_id;
     }
-  
+    
+
     public int getId() {
         return id;
     }

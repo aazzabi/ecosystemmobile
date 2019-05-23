@@ -9,6 +9,12 @@ import com.codename1.ui.Dialog;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.ui.Toolbar;
+import java.io.IOException;
+import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.io.NetworkEvent;
+import entities.Utilisateur;
+import gui.AffichageCatEvts;
+import gui.AffichageEvents;
 import entities.Utilisateur;
 import gui.AccueilForm;
 import gui.SignInForm;
@@ -23,6 +29,7 @@ public class MyApplication {
 
     private Form current;
     private Resources theme;
+    public static Utilisateur user;
 
     public void init(Object context) {
         // use two network threads instead of one
@@ -52,8 +59,8 @@ public class MyApplication {
             current.show();
             return;
         }
-
         Database db;
+        
 
         try {
             db = Database.openOrCreate("EcoSystem.db");
@@ -84,6 +91,7 @@ public class MyApplication {
         } catch (IOException ex) {
             
         }
+
 
     }
 

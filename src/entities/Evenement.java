@@ -8,6 +8,7 @@ package entities;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 //import java.sql.Date;
 /**
@@ -20,12 +21,36 @@ public class Evenement {
     private int id_categorie;
     private Utilisateur createdBy;
     private String lieu;
-    private Calendar date;
+    private Date date; //5damt b date fel champ date walla calendar ? le date aadeya fhemtech mnin jet calendar, firas mara badalaha l kol xd hhhhhhh tkt 7kina fiha , 
     private Categorie_Evts categorie;
     private String titre;
     private String description;
     private String cover;
-    private Calendar coverUpdatedAt;
+    private Date coverUpdatedAt;
+    private int nbVues;
+
+    public Evenement(int id, int id_categorie, Utilisateur createdBy, String lieu, Date date, Categorie_Evts categorie, String titre, String description, String cover, Date coverUpdatedAt, int nbVues) {
+        this.id = id;
+        this.id_categorie = id_categorie;
+        this.createdBy = createdBy;
+        this.lieu = lieu;
+        this.date = date;
+        this.categorie = categorie;
+        this.titre = titre;
+        this.description = description;
+        this.cover = cover;
+        this.coverUpdatedAt = coverUpdatedAt;
+        this.nbVues = nbVues;
+       
+    }
+
+    public int getNbVues() {
+        return nbVues;
+    }
+
+    public void setNbVues(int nbVues) {
+        this.nbVues = nbVues;
+    }
 
     public List<Utilisateur> getParticipants() {
         return participants;
@@ -34,14 +59,14 @@ public class Evenement {
     public void setParticipants(List<Utilisateur> participants) {
         this.participants = participants;
     }
-    private int nbvues;
+  
      
     private List<Utilisateur>participants=new ArrayList();
     
     public Evenement() {
     }  
 
-    public Evenement(int id, Utilisateur createdBy, String lieu, Calendar date, Categorie_Evts categorie, String titre, String description) {
+    public Evenement(int id, Utilisateur createdBy, String lieu, Date date, Categorie_Evts categorie, String titre, String description) {
         this.id = id;
         this.createdBy = createdBy;
         this.lieu = lieu;
@@ -51,14 +76,14 @@ public class Evenement {
         this.description = description;
     }
     
-     public Evenement( String lieu, int id_categorie,Calendar date, String titre, String description) {
+     public Evenement( String lieu, int id_categorie,Date date, String titre, String description) {
         this.lieu = lieu;
         this.id_categorie = id_categorie;
         this.titre = titre;
         this.description = description;
         this.date=date;
     }
-      public Evenement( String lieu, int id_categorie, String titre, String description,Calendar date) {
+      public Evenement( String lieu, int id_categorie, String titre, String description,Date date) {
         this.lieu = lieu;
         this.id_categorie = id_categorie;
         this.titre = titre;
@@ -75,7 +100,7 @@ public class Evenement {
     }
     
 
-    public Evenement(int id, Utilisateur createdBy, String lieu,Calendar date, Categorie_Evts categorie, String titre, String description, String cover, Calendar coverUpdatedAt, int nbvues) {
+    public Evenement(int id, Utilisateur createdBy, String lieu,Date date, Categorie_Evts categorie, String titre, String description, String cover, Date coverUpdatedAt) {
         this.id = id;
         this.createdBy = createdBy;
         this.lieu = lieu;
@@ -85,10 +110,10 @@ public class Evenement {
         this.description = description;
         this.cover = cover;
         this.coverUpdatedAt = coverUpdatedAt;
-        this.nbvues = nbvues;
+    
     }
 
-    public Evenement(int id, String lieu, Calendar date, Categorie_Evts categorie, String titre, String description, String cover, Calendar coverUpdatedAt, int nbvues) {
+    public Evenement(int id, String lieu, Date date, Categorie_Evts categorie, String titre, String description, String cover, Date coverUpdatedAt) {
         this.id = id;
         this.lieu = lieu;
         this.date = date;
@@ -97,20 +122,20 @@ public class Evenement {
         this.description = description;
         this.cover = cover;
         this.coverUpdatedAt = coverUpdatedAt;
-        this.nbvues = nbvues;
+       
     }
 
-    public Evenement(int id, String lieu, Categorie_Evts categorie, String titre, String description, String cover, int nbvues) {
+    public Evenement(int id, String lieu, Categorie_Evts categorie, String titre, String description, String cover) {
         this.id = id;
         this.lieu = lieu;
         this.categorie = categorie;
         this.titre = titre;
         this.description = description;
         this.cover = cover;
-        this.nbvues = nbvues;
+        
     }
 
-    public Evenement(int id, String lieu, int id_categorie, String titre, String description, Calendar date,String cover) {
+    public Evenement(int id, String lieu, int id_categorie, String titre, String description, Date date,String cover) {
         this.id = id;
         this.lieu = lieu;
         this.date = date;
@@ -121,7 +146,7 @@ public class Evenement {
     }
     
 
-    public Evenement(int id, Utilisateur createdBy, String lieu,Calendar date,Categorie_Evts categorie, String titre, String description, String cover, int nbvues) {
+    public Evenement(int id, Utilisateur createdBy, String lieu,Date date,Categorie_Evts categorie, String titre, String description, String cover) {
         this.id = id;
         this.createdBy = createdBy;
         this.lieu = lieu;
@@ -129,10 +154,10 @@ public class Evenement {
         this.titre = titre;
         this.description = description;
         this.cover = cover;
-        this.nbvues = nbvues;
+        
         this.date=date;
     }
-     public Evenement( Utilisateur createdBy, String lieu,Calendar date,Categorie_Evts categorie, String titre, String description, String cover, int nbvues) {
+     public Evenement( Utilisateur createdBy, String lieu,Date date,Categorie_Evts categorie, String titre, String description, String cover) {
        // this.id = id;
         this.createdBy = createdBy;
         this.lieu = lieu;
@@ -140,12 +165,12 @@ public class Evenement {
         this.titre = titre;
         this.description = description;
         this.cover = cover;
-        this.nbvues = nbvues;
+     
         this.date=date;
     }
    
 
-    public Evenement(String lieu, int id_categorie, String titre, String description, Calendar date, String cover) {
+    public Evenement(String lieu, int id_categorie, String titre, String description, Date date, String cover) {
         this.lieu = lieu;
         this.date = date;
         this.id_categorie = id_categorie;
@@ -180,11 +205,11 @@ public class Evenement {
         this.lieu = lieu;
     }
 
-    public Calendar getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Calendar date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -220,25 +245,19 @@ public class Evenement {
         this.cover = cover;
     }
 
-    public Calendar getCoverUpdatedAt() {
+    public Date getCoverUpdatedAt() {
         return coverUpdatedAt;
     }
 
-    public void setCoverUpdatedAt(Calendar coverUpdatedAt) {
+    public void setCoverUpdatedAt(Date coverUpdatedAt) {
         this.coverUpdatedAt = coverUpdatedAt;
     }
 
-    public int getNbvues() {
-        return nbvues;
-    }
 
-    public void setNbvues(int nbvues) {
-        this.nbvues = nbvues;
-    }
 
     @Override
     public String toString() {
-        return "Evenement{" + "id=" + id + ", createdBy=" + createdBy + ", lieu=" + lieu + ", categorie=" + categorie + ", titre=" + titre + ", description=" + description + ", cover=" + cover + ", nbvues=" + nbvues + '}';
+        return "Evenement{" + "id=" + id + ", createdBy=" + createdBy + ", lieu=" + lieu + ", categorie=" + categorie + ", titre=" + titre + ", description=" + description + ", cover=" + cover + ", nbvues=" + nbVues + '}';
     }
 
  

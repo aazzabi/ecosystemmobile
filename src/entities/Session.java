@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package entities;
+//import java.util.Properties;
+//import javax.mail.Authenticator;
 
 /**
  *

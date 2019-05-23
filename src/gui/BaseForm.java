@@ -114,7 +114,7 @@ public class BaseForm extends Form {
         tb.addMaterialCommandToSideMenu("Reparation", FontImage.MATERIAL_PARTY_MODE, e -> new ReparationForm(res).show());
         tb.addMaterialCommandToSideMenu("Annonce", FontImage.MATERIAL_ADD_A_PHOTO, e -> new AllAnoncesForm(res).show());
         tb.addMaterialCommandToSideMenu("Recyclage", FontImage.MATERIAL_ADD_A_PHOTO, e -> new HomeGui().ShowForm());
-
+        tb.addMaterialCommandToSideMenu("Events", FontImage.MATERIAL_ADD_A_PHOTO, e -> new AffichageCatEvts(res).show());
         tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> {
             try {
                 Database db = Database.openOrCreate("EcoSystem.db");

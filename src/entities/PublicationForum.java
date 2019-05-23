@@ -28,11 +28,9 @@ public class PublicationForum {
     private int nbrVues;
     private int nbrCommentaires;
     private ArrayList<CommentairePublication> commentaires;
-
     public PublicationForum() {  
         this.etat = "publié";
         this.createdBy = Session.getCurrentSession();
-        this.createdAt = Calendar.getInstance();
         this.nbrVues = 0;
         this.commentaires = new ArrayList();
     }
