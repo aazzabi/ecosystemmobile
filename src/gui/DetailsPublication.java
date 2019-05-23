@@ -47,6 +47,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import services.ForumService;
 import services.ServiceUser;
+import util.PDFHandler;
 
 /**
  *
@@ -65,10 +66,11 @@ public class DetailsPublication extends BaseForm {
     Label description;
     Resources res;
     ComboBox<String> cbSignalisation;
-    Button confirmeSign, btnAddComment;
+    Button confirmeSign, btnAddComment, download;
     String cause;
     TextField comm;
     private ArrayList<CommentairePublication> commentaires = new ArrayList<>();
+    private ArrayList<CommentairePublication> commentairesP = new ArrayList<>();
 
     
 public DetailsPublication(Resources res, PublicationForum p) {
@@ -112,9 +114,26 @@ public DetailsPublication(Resources res, PublicationForum p) {
     boxStyle.setMargin(2, 1, 1, 1);
     boxStyle.setPadding(1, 1, 1, 1);
     setSameWidth(titre,nbr_vues,etat);
+    
+    Button download = new Button("Imprimer");
+    download.setIcon(FontImage.createMaterial(FontImage.MATERIAL_LOCAL_PRINTSHOP, download.getUnselectedStyle()));
+    download.addActionListener(e -> {
+        PDFHandler pdfh = new PDFHandler();
+        commentairesP = FrmService.getAllCommentsByPublication(p.getId());
+        pdfh.getFile("<br><br><br>"
+                + "<h2><center style=\"color: red;\">"+p.getTitre()+"</center></h2><br>"
+                +"<h3> Par : "+p.getCreatedByName() + "</h3><br>"
+                +"<h3> Description :</h3><br> "+p.getDescription() + "<br>"
+                +"<h3> Etat :</h3> "+p.getEtat() + "<br>"
+                +"<h3> Nombre de vues :</h3> "+ String.valueOf(p.getNbrVues()) + " Vues <br>"
+                + this.getAllCommentaires(p.getId())
+                , "publication" + p.getId() + ".pdf");
+    });
+    
     cnt1.add(titre);
     cnt1.add(nbr_vues);
     cnt2.add(etat);
+    cnt2.add(download);
     cnt3.add(description);
     cnt4.add(publisher);
 
@@ -308,5 +327,17 @@ public void header(String titre){
     });
     bindButtonSelection(all, arrow);
 }
+
+    private String getAllCommentaires(int id) {
+    String all = "<h3> Commentaires </h3> \n <hr>";
+    String onePub = "";
+    commentairesP =(new ForumService()).getAllCommentsByPublication(id);
+    for (CommentairePublication a : commentaires) {
+        onePub = "Par : "+a.getCreatedByName()+"<br> Descirption "+a.getDescription()+"\n <hr>";
+        all= all+onePub;
+        onePub="";
+    }
+    return all;
+    }
 
 }

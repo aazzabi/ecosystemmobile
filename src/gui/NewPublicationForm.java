@@ -11,6 +11,7 @@ import com.codename1.ui.CheckBox;
 import com.codename1.ui.ComboBox;
 import static com.codename1.ui.Component.LEFT;
 import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
 import com.codename1.ui.Graphics;
@@ -62,7 +63,7 @@ public class NewPublicationForm extends BaseForm {
        getContentPane().setScrollVisible(false);
        this.header("Ajouter une nouvelle publication");
        ForumService FrmService = new ForumService();
-       Container cnt = new Container();
+       Container cnt = new Container(BoxLayout.y());
        
        categs = FrmService.getAllCategories();
        cbCategorie = new ComboBox<CategoriePub>();
@@ -93,11 +94,18 @@ public class NewPublicationForm extends BaseForm {
        btnConfirmer.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent evt) {
-               System.out.println("add");
-               PublicationForum publi = new PublicationForum(libelleP.getText(), descriptionP.getText(),idc, Utilisateur.current_user.getId());
-               FrmService.ajouterPublication(publi);
-               formaa = new DetailsPublication(res, publi);
-                formaa.show();
+               if ((libelleP.getText() == "") || (descriptionP.getText() == "")) {
+                    Dialog dlg = new Dialog("Ouupps !");
+                    dlg.add(new Label("Veuillez remplir tout les champs necéssaire ", "DialogBody"));
+                    int h = Display.getInstance().getDisplayHeight();
+                    dlg.setDisposeWhenPointerOutOfBounds(true);
+                    dlg.show(h /8 * 3,  h /8 * 3,0, 0);
+               }else{
+                    PublicationForum publi = new PublicationForum(libelleP.getText(), descriptionP.getText(),idc, Utilisateur.current_user.getId());
+                    FrmService.ajouterPublication(publi);
+                    formaa = new DetailsPublication(res, publi);
+                    formaa.show();
+               }
            }
            
        });
