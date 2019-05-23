@@ -85,6 +85,7 @@ public class BaseForm extends Form {
         tb.addMaterialCommandToSideMenu("B", FontImage.MATERIAL_PARTY_MODE, e -> new AccueilForm(res).show());
         tb.addMaterialCommandToSideMenu("C", FontImage.MATERIAL_SETTINGS, e -> new AccueilForm(res).show());
         tb.addMaterialCommandToSideMenu("Forum", FontImage.MATERIAL_VOICEMAIL, e -> new ForumForm(res).show());
+        tb.addMaterialCommandToSideMenu("Reparation", FontImage.MATERIAL_PARTY_MODE, e -> new ReparationForm(res).show());
         tb.addMaterialCommandToSideMenu("Annonce", FontImage.MATERIAL_ADD_A_PHOTO, e -> new AllAnonces(res).show());
         tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> {
             try {
