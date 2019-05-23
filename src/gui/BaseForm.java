@@ -17,11 +17,15 @@ import com.codename1.ui.Label;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.layouts.Layout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 import entities.Utilisateur;
+import static gui.recyclage.BaseGui.MainForm;
+import gui.recyclage.HomeGui;
+import gui.recyclage.HostList;
 import java.io.IOException;
 
 /**
@@ -55,6 +59,29 @@ public class BaseForm extends Form {
         return separator;
     }
 
+    //Blocks (GridLayout)
+    public void AddBlocks1x1(Component... Components){
+        AddBlocks_Custom(1, 1, Components);
+    } 
+    public void AddBlocks3x1(Component... Components){
+        AddBlocks_Custom(3, 1, Components);
+    } 
+    public void AddBlocks2x2(Component... Components){
+        AddBlocks_Custom(2, 2, Components);
+    } 
+    public void AddBlocks3x3(Component... Components){
+        AddBlocks_Custom(3, 3, Components);
+    }
+    public void AddBlocks_Custom(int x, int y, Component... Components){
+        MainForm.setLayout(new GridLayout(x, y));
+        
+        for (Component TempComponent : Components)
+            MainForm.add(TempComponent); 
+    }
+    
+    
+    
+    //sidemenu
     protected void addSideMenu(Resources res) {
         Toolbar tb = getToolbar();
         Image img = res.getImage("logoeco.png");
@@ -86,6 +113,8 @@ public class BaseForm extends Form {
         tb.addMaterialCommandToSideMenu("Forum", FontImage.MATERIAL_VOICEMAIL, e -> new ForumForm(res).show());
         tb.addMaterialCommandToSideMenu("Reparation", FontImage.MATERIAL_PARTY_MODE, e -> new ReparationForm(res).show());
         tb.addMaterialCommandToSideMenu("Annonce", FontImage.MATERIAL_ADD_A_PHOTO, e -> new AllAnoncesForm(res).show());
+        tb.addMaterialCommandToSideMenu("Recyclage", FontImage.MATERIAL_ADD_A_PHOTO, e -> new HomeGui().ShowForm());
+
         tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> {
             try {
                 Database db = Database.openOrCreate("EcoSystem.db");
