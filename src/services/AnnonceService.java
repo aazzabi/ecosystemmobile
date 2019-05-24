@@ -8,6 +8,7 @@ package services;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
+import com.codename1.io.MultipartRequest;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
@@ -29,16 +30,36 @@ public class AnnonceService {
     ArrayList<Annonce> listAnnonce = new ArrayList<>();
     ArrayList<Categorie_Annonce> listCat = new ArrayList<>();
 
-    public void ajouterAnnonce(Annonce a) {
-        ConnectionRequest con = new ConnectionRequest();
-        String Url = "http://localhost/ecosystemweb/web/app_dev.php/annonceApi/new?titre=" + a.getTitre() + "&description=" + a.getDescription() + "&prix=" + a.getPrix().toString() + "&photo=" + a.getPhoto() + "&categorie=" + a.getCategorie_id() + "&user=" + a.getUser_id() + "&region=" + a.getRegion();
-        con.setUrl(Url);
-        con.addResponseListener((e) -> {
-            String str = new String(con.getResponseData());
-            //System.out.println(str);//Affichage de la réponse serveur sur la console
 
-        });
-        NetworkManager.getInstance().addToQueueAndWait(con);
+public void ajouterAnnonce(Annonce a) {
+        String Url = "http://localhost/ecosystemweb/web/app_dev.php/annonceApi/new";
+        MultipartRequest req = new MultipartRequest();
+        try {
+            req.setUrl(Url);
+            req.setPost(true);
+            req.addArgument("titre", a.getTitre());
+            req.addArgument("description", a.getDescription());
+            req.addArgument("prix", a.getPrix().toString());
+            req.addArgument("photo", a.getPhoto());
+            req.addArgument("categorie", String.valueOf(a.getCategorie_id()));
+            req.addArgument("user", String.valueOf(a.getUser_id()));
+            req.addArgument("region", a.getRegion());
+   
+            if (!a.getPhoto().equals("")) {
+                req.addData("photoannonce", a.getPhoto(), "image/jpeg");
+                req.setFilename("photoannonce", a.getTitre()+ ".jpg");
+            }
+
+            req.addResponseListener((response) -> {
+                byte[] data = (byte[]) response.getMetaData();
+                String s = new String(data);
+                // System.out.println("data : " + s);
+            });
+
+            NetworkManager.getInstance().addToQueueAndWait(req);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     public void UpdateLikesAnnonce(int id) {
@@ -316,4 +337,5 @@ public class AnnonceService {
         NetworkManager.getInstance().addToQueueAndWait(con);
         return listAnnonce;
     }
+       
 }

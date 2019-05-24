@@ -5,6 +5,7 @@
  */
 package gui;
 
+
 import com.codename1.components.ImageViewer;
 import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
@@ -36,10 +37,12 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import services.AnnonceService;
 
+
 /**
  *
  * @author anasc
  */
+
 public class ShowAnnonceForm extends BaseForm {
 
     Container cnt;
@@ -204,4 +207,5 @@ public class ShowAnnonceForm extends BaseForm {
         s.setBgImage(star);
         s.setBgTransparency(0);
     }
+
 }

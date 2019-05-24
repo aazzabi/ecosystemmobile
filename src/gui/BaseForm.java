@@ -7,6 +7,8 @@ package gui;
 
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.db.Database;
+import com.codename1.messaging.Message;
+import com.codename1.ui.Button;
 import com.codename1.ui.Component;
 import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
@@ -16,6 +18,8 @@ import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.URLImage;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.layouts.LayeredLayout;
@@ -108,6 +112,7 @@ public class BaseForm extends Form {
                             new Label(URLImage.createToStorage(encImage, "User" + Utilisateur.current_user.getPhoto(), Utilisateur.current_user.getPhoto(), URLImage.RESIZE_SCALE_TO_FILL).scaled(200, 200), "PictureWhiteBackgrond"))
             ));
         }
+
         tb.addMaterialCommandToSideMenu("A", FontImage.MATERIAL_UPDATE, e -> new AccueilForm(res).show());
         tb.addMaterialCommandToSideMenu("B", FontImage.MATERIAL_PARTY_MODE, e -> new AccueilForm(res).show());
         tb.addMaterialCommandToSideMenu("Forum", FontImage.MATERIAL_VOICEMAIL, e -> new ForumForm(res).show());
@@ -115,6 +120,25 @@ public class BaseForm extends Form {
         tb.addMaterialCommandToSideMenu("Annonce", FontImage.MATERIAL_ADD_A_PHOTO, e -> new AllAnoncesForm(res).show());
         tb.addMaterialCommandToSideMenu("Recyclage", FontImage.MATERIAL_ADD_A_PHOTO, e -> new HomeGui().ShowForm());
         tb.addMaterialCommandToSideMenu("Events", FontImage.MATERIAL_ADD_A_PHOTO, e -> new AffichageCatEvts(res).show());
+        tb.addMaterialCommandToSideMenu("Commandes", FontImage.MATERIAL_STYLE, e -> new CommandeForm(res).show());
+        tb.addMaterialCommandToSideMenu("Livraisons", FontImage.MATERIAL_TIME_TO_LEAVE, e -> new LivraisonForm(res).show());
+      if(Utilisateur.current_user.getRoles().contains("ROLE_LIVREUR"))
+        {
+             tb.addMaterialCommandToSideMenu("Espace Livreur", FontImage.MATERIAL_WORK, e -> new EspaceLivreur(res).show());
+        }
+
+       
+        
+      
+      
+     
+     
+     
+     
+     
+     
+        
+
         tb.addMaterialCommandToSideMenu("Logout", FontImage.MATERIAL_EXIT_TO_APP, e -> {
             try {
                 Database db = Database.openOrCreate("EcoSystem.db");

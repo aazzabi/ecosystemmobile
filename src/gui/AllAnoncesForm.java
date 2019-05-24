@@ -42,6 +42,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import services.AnnonceService;
 import services.signalAnnonceService;
+import services.PanierService;
+import entities.AnnoncePanier;
 
 /**
  *
@@ -51,6 +53,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
 
     Resources res;
     private ArrayList<Annonce> annonces = new ArrayList<>();
+    private ArrayList<AnnoncePanier> annoncesp = new ArrayList<>();
     Container cnt, icp, ic;
     ArrayList<Categorie_Annonce> listCat = new ArrayList<>();
     ArrayList<signalAnnonce> lisS = new ArrayList<>();
@@ -58,6 +61,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
     public AllAnoncesForm(Resources res) {
         super("Annonces", BoxLayout.y());
         AnnonceService serviceAnnonce = new AnnonceService();
+         PanierService panierService = new PanierService();
         cnt = new Container();
         this.res = res;
         Toolbar tb = new Toolbar(true);
@@ -119,12 +123,36 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
             Ccateg.addItem(l.getLibelle());
         }
         Button Tailler = new Button("");
+         Tailler.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent evt) {
+                                int x=1;
+                                annoncesp=panierService.getAllAnnoncesP();
+                                if(annoncesp.size()>0)
+                                {
+                                ShowPanier a=new ShowPanier(res);
+                            a.show();
+                                }
+                                else
+                                {
+                                 Dialog.show("Information", "Votre Panier est Vide , Veuillez le remplir", "OK", "Cancel");
+                                }
+
+                            }
+                        });
+         Label y = new Label("                                                   ");
         Tailler.setIcon(FontImage.createMaterial(FontImage.MATERIAL_SHOPPING_CART, Tailler.getUnselectedStyle()));
-        Label c = new Label("{0}");
+        Label c = new Label("(0)");
+        annoncesp=panierService.getAllAnnoncesP();
+                              int sizePanier=annoncesp.size();
+                              c.setText("("+sizePanier+")");
+                              c.getStyle().setFgColor(0x220000);
+        
         row.add(ajout);
         row1.add(Ccateg);
         row1.add(Ctrier);
         row.add(row1);
+       // row.add(y);
         row.add(Tailler);
         row.add(c);
 
@@ -152,7 +180,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                     Container element = new Container(BoxLayout.y());
                     Container ls = new Container(BoxLayout.x());
                     try {
-                        Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
+                        Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(380, 380);
 
                         ImageViewer v = new ImageViewer(img);
                         Container ls1 = new Container(BoxLayout.y());
@@ -179,6 +207,44 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                         ls1.add(buttons);
                         ls.add(ls1);
                         element.add(ls);
+                        
+                        
+                         panier.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent evt) {
+                                int x=1;
+                                annoncesp=panierService.getAllAnnoncesP();
+                                 for (AnnoncePanier ty : annoncesp) {
+                                   if(ty.getId_annonce().equals(Integer.toString(a.getId()))) 
+                                   {
+                                   x=2;
+                                   }
+                                   else
+                                   {
+                                   x=1;
+                                   }
+                                 }
+                                 if(x==1)
+                                 {
+                                 AnnoncePanier ap = new AnnoncePanier(Integer.toString(a.getId()),a.getTitre(),a.getDescription(),a.getPrix(),a.getRegion(),a.getPhoto());
+                              panierService.ajouterAnnonce(ap);
+                              System.out.println("C bn ajout panier ");
+                              annoncesp=panierService.getAllAnnoncesP();
+                              int sizePanier=annoncesp.size();
+                              c.setText("("+sizePanier+")");
+                              c.getStyle().setFgColor(0x220000);
+                                 }
+                                 else
+                                 {
+                                   Dialog.show("Erreur", "Article Déja Ajouté au Panier", "OK", "Cancel");
+                                 }
+                                 
+                            }
+                        });
+                        
+                        
+                        
+                        
                         show.addActionListener(new ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent evt) {
@@ -317,7 +383,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                             Container element = new Container(BoxLayout.y());
                             Container ls = new Container(BoxLayout.x());
                             try {
-                                Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
+                                Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(380, 380);
 
                                 ImageViewer v = new ImageViewer(img);
                                 Container ls1 = new Container(BoxLayout.y());
@@ -471,7 +537,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                                 Container element = new Container(BoxLayout.y());
                                 Container ls = new Container(BoxLayout.x());
                                 try {
-                                    Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
+                                    Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(380, 380);
 
                                     ImageViewer v = new ImageViewer(img);
                                     Container ls1 = new Container(BoxLayout.y());
@@ -616,7 +682,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                                 Container element = new Container(BoxLayout.y());
                                 Container ls = new Container(BoxLayout.x());
                                 try {
-                                    Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
+                                    Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(380, 380);
 
                                     ImageViewer v = new ImageViewer(img);
                                     Container ls1 = new Container(BoxLayout.y());
@@ -761,7 +827,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                                 Container element = new Container(BoxLayout.y());
                                 Container ls = new Container(BoxLayout.x());
                                 try {
-                                    Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
+                                    Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(380, 380);
 
                                     ImageViewer v = new ImageViewer(img);
                                     Container ls1 = new Container(BoxLayout.y());
@@ -915,7 +981,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                             Container element = new Container(BoxLayout.y());
                             Container ls = new Container(BoxLayout.x());
                             try {
-                                Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
+                                Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(380, 380);
 
                                 ImageViewer v = new ImageViewer(img);
                                 Container ls1 = new Container(BoxLayout.y());
@@ -1058,7 +1124,7 @@ public class AllAnoncesForm extends BaseForm implements PushCallback {
                             Container element = new Container(BoxLayout.y());
                             Container ls = new Container(BoxLayout.x());
                             try {
-                                Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(500, 500);
+                                Image img = Image.createImage("file:/C:/wamp/www/ecosystemweb/web/uploads/Annonce/photo/" + a.getPhoto()).fill(380, 380);
 
                                 ImageViewer v = new ImageViewer(img);
                                 Container ls1 = new Container(BoxLayout.y());

@@ -42,7 +42,7 @@ import services.AnnonceService;
  *
  * @author anasc
  */
-public class AddAnnonceForm extends BaseForm {
+public class AddAnnonce extends BaseForm {
 
     Resources res;
     File file;
@@ -60,7 +60,7 @@ public class AddAnnonceForm extends BaseForm {
     ArrayList<String> Region = new ArrayList<>();
     private static String i;
 
-    public AddAnnonceForm(Resources res) {
+    public AddAnnonce(Resources res) {
 
         super("Annonces", BoxLayout.y());
         this.res = res;
@@ -70,10 +70,6 @@ public class AddAnnonceForm extends BaseForm {
         Toolbar tb = new Toolbar(true);
         setToolbar(tb);
         getTitleArea().setUIID("Container");
-        getToolbar().addCommandToRightBar("Retour", null, (evt) -> {
-            new AllAnoncesForm(res).show();
-
-        });
         getContentPane().setScrollVisible(false);
         ButtonGroup bg = new ButtonGroup();
         int size = Display.getInstance().convertToPixels(1);
@@ -126,9 +122,12 @@ public class AddAnnonceForm extends BaseForm {
         tprix = new TextField("", "Prix");
         btnajout = new Button("ajouter");
         btncapture = new Button("Capture");
+        back = new Button("Retour");
+        back.setIcon(FontImage.createMaterial(FontImage.MATERIAL_KEYBOARD_ARROW_LEFT, back.getUnselectedStyle()));
         try {
-            img = Image.createImage("file:/C:/ecosystemMobile/res/annonce.jpg").fill(300, 300);
+            img = Image.createImage("file:/C:/Users/anasc/Downloads/Abstract-new-arrival-composition-with-flat-design/379874-PCNF9W-951.jpg").fill(300, 300);
             vu1 = new ImageViewer(img);
+            element.add(back);
             element.add(vu1);
             element.add(tnom);
             element.add(tdesc);
@@ -172,16 +171,13 @@ public class AddAnnonceForm extends BaseForm {
         btnajout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if (tnom.getText().equals("") || tdesc.getText().equals("") || tprix.getText().equals("")) {
+               if (tnom.getText().equals("") || tdesc.getText().equals("") || tprix.getText().equals("")) {
 
                 } else {
                     Annonce a = new Annonce(tnom.getText(), tdesc.getText(), Double.parseDouble(tprix.getText()), reg, path.getText(), idc, Utilisateur.current_user.getId());
                     annonceS.ajouterAnnonce(a);
                     new AllAnoncesForm(res).show();
                 }
-                //copyImages.deplacerVers(, absolutePathPhotoAnnonce, "C:\\ecosystemjava\\src\\res\\Annonce\\photo\\");
-                // copyImages.deplacerVers(path, absolutePathPhotoAnnonce, "C:\\wamp\\www\\ecosystemweb\\web\\uploads\\Annonce\\photo\\");
-
             }
         });
         add(cnt);

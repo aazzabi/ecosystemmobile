@@ -42,6 +42,7 @@ public class ServiceUser {
             float id = Float.parseFloat(obj.get("id").toString());
             u.setId((int) id);
 
+
             u.setUsername(obj.get("username").toString());
             u.setRoles(obj.get("roles").toString());
 //            u.setEmail(obj.get("email").toString());
@@ -49,6 +50,15 @@ public class ServiceUser {
 //            u.setPrenom(obj.get("prenom").toString());
 //            u.setNumtel(obj.get("numtel").toString());
 //            u.setNom(obj.get("nom").toString());
+
+            u.setNomPropriete(obj.get("nomPropriete").toString());
+            u.setVille(obj.get("ville").toString());
+            u.setRue(obj.get("rue").toString());
+          u.setRoles(obj.get("roles").toString());
+           u.setPrenom(obj.get("prenom").toString());
+           u.setNumtel(obj.get("numtel").toString());
+           u.setNom(obj.get("nom").toString());
+
             //u.setProfilepicture("" + obj.get("profilePicture")); Au cas ou
         } catch (IOException ex) {
         }
