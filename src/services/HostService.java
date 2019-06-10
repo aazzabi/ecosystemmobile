@@ -29,7 +29,7 @@ public class HostService {
         
         List<Host> HostList = new ArrayList<>();
         
-        Utility.MakeConnection("http://127.0.0.1:8000/host/mobile/afficheAllHost", () -> {
+        Utility.MakeConnection("http://localhost/ecosystemweb/web/app_dev.php/host/mobile/afficheAllHost", () -> {
             
             //Initialize Lists
             List<Map<String, Object>> PreHostList =  Utility.MakeListFromJSON();
@@ -49,7 +49,7 @@ public class HostService {
         
         List<HostRating> HostList = new ArrayList<>();
         
-        Utility.MakeConnection("http://127.0.0.1:8000/host/mobile/afficheAllHostRating", () -> {
+        Utility.MakeConnection("http://localhost/ecosystemweb/web/app_dev.php/host/mobile/afficheAllHostRating", () -> {
             
             //Initialize Lists
             List<Map<String, Object>> PreHostList =  Utility.MakeListFromJSON();
@@ -68,7 +68,7 @@ public class HostService {
       
     public static Host GetHost(int ID){
         
-        Utility.MakeConnection("http://127.0.0.1:8000/host/mobile/DisplayHost/"+ String.valueOf(ID), () -> {
+        Utility.MakeConnection("http://localhost/ecosystemweb/web/app_dev.php/host/mobile/DisplayHost/"+ String.valueOf(ID), () -> {
             
         //Initialize Lists
         List<Map<String, Object>> PreHostList =  Utility.MakeListFromJSON();
@@ -80,7 +80,7 @@ public class HostService {
        return HostTemp;
     }
     public static void DeleteHost(int ID){
-        Utility.MakeConnection("http://127.0.0.1:8000/host/mobile/DeleteHost/"+ String.valueOf(ID),() -> {
+        Utility.MakeConnection("http://localhost/ecosystemweb/web/app_dev.php/host/mobile/DeleteHost/"+ String.valueOf(ID),() -> {
             new HostList();
         });
         System.out.println("<HostService::DELETE HOST  !!!! > Done with the execution of the URL Query, Redirecting to the List");
@@ -90,7 +90,7 @@ public class HostService {
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         /** Date Works END */
             
-        Utility.MakeConnection("http://127.0.0.1:8000/host/mobile/ModifyHost/" + HostIDToChange + "/" +
+        Utility.MakeConnection("http://localhost/ecosystemweb/web/app_dev.php/host/mobile/ModifyHost/" + HostIDToChange + "/" +
                 H.getOwner()+"/"+ format.format(H.getDateStart()) +"/"+ format.format(H.getDateEnd()) +"/"+ H.getLocalisation()+"/" , () -> {
                     new HostDetails(H); 
                 });
@@ -102,7 +102,7 @@ public class HostService {
         /** Date Works END */
         
         
-        Utility.MakeConnection("http://127.0.0.1:8000/host/mobile/addHost/" + 
+        Utility.MakeConnection("http://localhost/ecosystemweb/web/app_dev.php/host/mobile/addHost/" + 
                 H.getOwner()+"/"+ H.getTotalPlaces() +"/"+ format.format(H.getDateStart()) +"/"+ format.format(H.getDateEnd()) +"/"+ H.getLocalisation() +"/"+ H.getOwnerID() +"/"+ H.getParticipants() , () -> {
                     System.out.println("<HostService::AddHost> Host URL Query has been executed");
                     new HostDetails(H);

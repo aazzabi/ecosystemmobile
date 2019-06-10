@@ -57,7 +57,7 @@ public void ajouterAnnonce(Annonce a) {
             });
 
             NetworkManager.getInstance().addToQueueAndWait(req);
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }

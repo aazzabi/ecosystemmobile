@@ -8,6 +8,8 @@ package gui.recyclage;
 import com.codename1.capture.Capture;
 import com.codename1.components.ImageViewer;
 import com.codename1.io.FileSystemStorage;
+import com.codename1.io.rest.Response;
+import com.codename1.io.rest.Rest;
 import entities.Host;
 import com.codename1.ui.Button;
 import com.codename1.ui.Display;
@@ -17,10 +19,12 @@ import com.codename1.ui.Dialog;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.ImageIO;
 import com.codename1.ui.util.Resources;
+import com.codename1.util.Base64;
 import com.wefeel.QRMaker.QRMaker;
 import entities.Utilisateur;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Map;
 /**
  *
  * @author Hiro
@@ -41,7 +45,7 @@ public class HostParticipate extends BaseGui{
     }
     
     private void MakeInterface( Resources res){
-      	 /*String accountSID = "ACeff1a322ac15e1b89c8851cdab1e2766";
+      	 String accountSID = "ACeff1a322ac15e1b89c8851cdab1e2766";
 String authToken = "9b8c6660c2962fa3dfa62fee7884f5b7";
 String fromPhone = "+18577632054";
 		Response<Map> result = Rest.post("https://api.twilio.com/2010-04-01/Accounts/" + accountSID + "/Messages.json").
@@ -50,7 +54,7 @@ String fromPhone = "+18577632054";
         queryParam("Body", "Vous avez participer avec succés à la mission nommee :   "+CurrentHost.getOwner()+" ! ! ! ").
         header("Authorization", "Basic " + Base64.encodeNoNewline((accountSID + ":" + authToken).getBytes())).
         getAsJsonMap();
-		*/
+		
  Button btnMoveCamera = new Button("Retour à la Liste");
         btnMoveCamera.addActionListener(e->{
             new HostList() ; 

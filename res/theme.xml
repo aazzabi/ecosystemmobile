@@ -54,9 +54,12 @@
     <image name="news-tab-down.png" type="multi"  />
     <image name="on-off-off.png" type="multi"  />
     <image name="on-off-on.png" type="multi"  />
+    <image name="pannel.png"  />
+    <image name="pannel_1.png"  />
     <image name="partenariat.jpg"  />
     <image name="profile-pic.jpg" type="multi"  />
     <image name="qr.png"  />
+    <image name="recycle_77943.png"  />
     <image name="SelectBar.borderBottom_1.png" type="multi"  />
     <image name="SelectBar.borderBottomL_1.png" type="multi"  />
     <image name="SelectBar.borderBottomR_1.png" type="multi"  />
